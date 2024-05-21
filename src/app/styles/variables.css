@@ -1,0 +1,18 @@
+:root {
+  --bg-color: #F0EBE1;
+  --primary-color-1: #9FDC26;
+  --primary-color-2: #F29C33;
+  --primary-color-3: #EE6352;
+  --primary-color-4: #C4E5FC;
+  --light-color-1: #FFF;
+  --light-color-2: #FFFBF2;
+  --dark-color-1: #262522;
+
+  --card-bg-color: var(--light-color-1, #FFF);
+  --light-button-bg: var(--light-color-1, #FFF);
+  --light-button-text: var(--dark-color-1, #000);
+  --dark-button-bg: var(--dark-color-1, #000);
+  --dark-button-text: var(--light-color-2, #FFF);
+
+  
+}
