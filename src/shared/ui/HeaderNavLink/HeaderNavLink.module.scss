@@ -4,17 +4,19 @@
   display: block;
   width: 100%;
   left: 0;
-  border-bottom: 4px solid var(--primary-color-3);
+  bottom: 0;
+  height: 4px;
+  background-color: var(--primary-color-3);
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
   will-change: transform;
   transform: scaleX($scale);
-  transform-origin: top left;
+  transform-origin: bottom left;
   transition: transform var(--transform-transition);
 }
 
 .navlink {
-  padding: 8px 8px 5px;
+  padding: 8px;
   position: relative;
   font-family: var(--primary-ff);
   font-size: .875rem;
@@ -32,18 +34,18 @@
     opacity: 1;
   }
 
-  &::after {
+  &::before {
     @include navlink_underline($scale: 0);
   }
 
-  &:hover::after {
+  &:hover::before {
     transform: scaleX(1);
   }
 
   &_active {
     opacity: 1;
 
-    &::after {
+    &::before {
       @include navlink_underline;
     }
   }
