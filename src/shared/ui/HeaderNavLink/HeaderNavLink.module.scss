@@ -1,0 +1,50 @@
+@mixin navlink_underline($scale: 1) {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  left: 0;
+  border-bottom: 4px solid var(--primary-color-3);
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  will-change: transform;
+  transform: scaleX($scale);
+  transform-origin: top left;
+  transition: transform var(--transform-transition);
+}
+
+.navlink {
+  padding: 8px 8px 5px;
+  position: relative;
+  font-family: var(--primary-ff);
+  font-size: .875rem;
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--light-button-text);
+  opacity: .5;
+  cursor: pointer;
+  will-change: opacity;
+  transition: opacity var(--hover-transition);
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::after {
+    @include navlink_underline($scale: 0);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &_active {
+    opacity: 1;
+
+    &::after {
+      @include navlink_underline;
+    }
+  }
+}

@@ -4,15 +4,27 @@
   --primary-color-2: #F29C33;
   --primary-color-3: #EE6352;
   --primary-color-4: #C4E5FC;
-  --light-color-1: #FFF;
+  --light-color-1: #FFFFFF;
   --light-color-2: #FFFBF2;
-  --dark-color-1: #262522;
+  --dark-color-1: #000000;
+  --dark-color-2: #262522;
 
-  --card-bg-color: var(--light-color-1, #FFF);
-  --light-button-bg: var(--light-color-1, #FFF);
-  --light-button-text: var(--dark-color-1, #000);
-  --dark-button-bg: var(--dark-color-1, #000);
-  --dark-button-text: var(--light-color-2, #FFF);
+  --card-bg-color: var(--light-color-1, #FFFFFF);
+  --light-button-bg: var(--light-color-1, #FFFFFF);
+  --light-button-text: var(--dark-color-2, #262522);
+  --dark-button-bg: var(--dark-color-2, #262522);
+  --dark-button-text: var(--light-color-2, #FFFBF2);
 
-  
+  --primary-ff: 'Roboto', Arial, sans-serif;
+  --secondary-ff: 'Montserrat', Monaco, monospace;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --hover-transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1) 0s;
+  --transform-transition: 0.3s ease;
 }
