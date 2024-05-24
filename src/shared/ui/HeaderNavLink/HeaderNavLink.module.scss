@@ -25,13 +25,13 @@
   text-transform: uppercase;
   text-decoration: none;
   color: var(--light-button-text);
-  opacity: .5;
+  opacity: var(--inactive-element-opacity);
   cursor: pointer;
   will-change: opacity;
   transition: opacity var(--hover-transition);
 
   &:hover {
-    opacity: 1;
+    opacity: var(--active-element-opacity);
   }
 
   &::before {
@@ -43,7 +43,7 @@
   }
 
   &_active {
-    opacity: 1;
+    opacity: var(--active-element-opacity);
 
     &::before {
       @include navlink_underline;

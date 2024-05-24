@@ -1,0 +1,28 @@
+.tablink {
+  display: block;
+  padding: 12px 24px;
+  background-color: transparent;
+  border: 1px solid var(--dark-border-color);
+  border-radius: 24px;
+  color: var(--light-button-text);
+  font-size: .875rem;
+  font-family: var(--primary-ff);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: var(--inactive-element-opacity);
+  cursor: pointer;
+  will-change: opacity;
+  transition: opacity var(--hover-transition);
+
+  &:hover {
+    opacity: var(--active-element-opacity);
+  }
+
+  &_active {
+    opacity: var(--active-element-opacity);
+    background-color: var(--primary-color-1);
+  }
+}
+

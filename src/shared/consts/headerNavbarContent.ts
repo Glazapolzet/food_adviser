@@ -1,5 +1,7 @@
+import { PathNames } from "shared/config";
+
 export const headerNavbarContent = [
-  { link: "/", title: "Home" },
-  { link: "/recipes", title: "Recipes" },
-  { link: "/stats", title: "Stats" },
+  { link: PathNames.HOME, title: "Home" },
+  { link: PathNames.RECIPES, title: "Recipes" },
+  { link: PathNames.STATS, title: "Stats" },
 ];

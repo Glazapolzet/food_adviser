@@ -1,1 +1,1 @@
-export { paths } from "./paths";
+export { PathNames } from "./paths/paths";

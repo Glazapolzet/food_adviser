@@ -1,5 +1,4 @@
 :root {
-  --bg-color: #F0EBE1;
   --primary-color-1: #9FDC26;
   --primary-color-2: #F29C33;
   --primary-color-3: #EE6352;
@@ -8,6 +7,10 @@
   --light-color-2: #FFFBF2;
   --dark-color-1: #000000;
   --dark-color-2: #262522;
+
+  --bg-color: #F0EBE1;
+  --light-border-color: rgba(38, 37, 34, .24);
+  --dark-border-color: var(--dark-color-2, #262522);
 
   --card-bg-color: var(--light-color-1, #FFFFFF);
   --light-button-bg: var(--light-color-1, #FFFFFF);
@@ -25,6 +28,9 @@
   --fw-bold: 700;
   --fw-extrabold: 800;
 
-  --hover-transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1) 0s;
-  --transform-transition: 0.3s ease;
+  --inactive-element-opacity: .5;
+  --active-element-opacity: 1;
+
+  --hover-transition: .3s cubic-bezier(.33, 1, 0.68, 1) 0s;
+  --transform-transition: .3s ease;
 }

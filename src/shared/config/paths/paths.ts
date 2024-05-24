@@ -1,5 +1,5 @@
-export const paths = {
-  home: "/",
-  recipes: "/recipes",
-  stats: "/stats",
-};
+export enum PathNames {
+  HOME = "/",
+  RECIPES = "/recipes",
+  STATS = "/stats",
+}

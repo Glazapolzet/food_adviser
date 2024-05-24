@@ -1,7 +1,7 @@
 import { HeaderNavLink } from "shared/ui";
-import styles from "./HeaderNavbar.module.scss";
+import styles from "./HeaderNavBar.module.scss";
 
-export const HeaderNavbar = ({ items }) => {
+export const HeaderNavBar = ({ items }) => {
   const navigationContent = items.map((item) => (
     <li key={item.title} className={styles.item}>
       <HeaderNavLink link={item.link} title={item.title} />

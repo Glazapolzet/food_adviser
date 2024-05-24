@@ -1,3 +1,21 @@
-.header {
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 24px;
+  min-height: 70px;
+  align-items: center;
+  border: 1px solid var(--light-border-color);
+  border-radius: 32px;
+}
 
+.logo_container {
+  justify-self: start;
+}
+
+.navbar_container {
+  justify-self: center;
+}
+
+.search_container {
+  justify-self: end;
 }

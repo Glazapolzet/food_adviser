@@ -1,1 +1,1 @@
-export { HeaderNavbar } from "./ui/HeaderNavbar";
+export { HeaderNavBar } from "./ui/HeaderNavBar";
