@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss";
-import { HeaderNavBar } from "entities/header-navbar";
+import { NavBar } from "entities/navbar";
 import { headerNavbarContent } from "shared/consts";
 
 export const Header = () => {
@@ -7,7 +7,7 @@ export const Header = () => {
     <div className={styles.content}>
       <div className={styles.logo_container}>logo</div>
       <div className={styles.navbar_container}>
-        <HeaderNavBar items={headerNavbarContent} />
+        <NavBar items={headerNavbarContent} />
       </div>
       <div className={styles.search_container}>search</div>
     </div>

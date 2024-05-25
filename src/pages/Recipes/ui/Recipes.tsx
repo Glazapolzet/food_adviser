@@ -1,11 +1,15 @@
 import styles from "./Recipes.module.scss";
-import { RecipePreface } from "entities/recipe-preface";
-import { RecipeTabBar } from "entities/recipe-tabbar";
+import { Preface } from "entities/preface";
+import { TabBar } from "entities/tabbar";
 import { recipeTabBarContent } from "shared/consts";
 import { useLoaderData } from "react-router-dom";
 
 export const Recipes = () => {
   const data = useLoaderData();
+
+  // interface Dummy {
+  //   name: null | string;
+  // }
 
   // const [recipes, setRecipes] = useState([
   //   {
@@ -62,8 +66,8 @@ export const Recipes = () => {
 
   return (
     <section>
-      <RecipePreface />
-      <RecipeTabBar items={recipeTabBarContent} />
+      <Preface />
+      <TabBar items={recipeTabBarContent} />
       <div>{data}</div>
     </section>
   );

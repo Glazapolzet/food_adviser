@@ -1,8 +1,11 @@
 import { clsx } from "clsx";
-import styles from "./RecipeTabLink.module.scss";
+import styles from "./TabLink.module.scss";
 import { NavLink } from "react-router-dom";
+import { FC } from "react";
 
-export const RecipeTabLink = ({ link, title }) => {
+interface TabLinkProps {}
+
+export const TabLink = ({ link, title }) => {
   return (
     <NavLink
       to={link}

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { clsx } from "clsx";
-import styles from "./HeaderNavLink.module.scss";
+import styles from "./NavigationLink.module.scss";
 
-export const HeaderNavLink = ({ link, title }) => {
+export const NavigationLink = ({ link, title }) => {
   return (
     <NavLink
       to={link}
