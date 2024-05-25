@@ -5,11 +5,11 @@ import { headerNavbarContent } from "shared/consts";
 export const Header = () => {
   return (
     <div className={styles.content}>
-      <div className={styles.logo_container}>logo</div>
-      <div className={styles.navbar_container}>
+      <div className={styles.logoContainer}>logo</div>
+      <div className={styles.navbarContainer}>
         <NavBar items={headerNavbarContent} />
       </div>
-      <div className={styles.search_container}>search</div>
+      <div className={styles.searchContainer}>search</div>
     </div>
   );
 };

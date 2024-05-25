@@ -1,8 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { clsx } from "clsx";
 import styles from "./NavigationLink.module.scss";
+import { FC } from "react";
 
-export const NavigationLink = ({ link, title }) => {
+interface NavigationLinkProps {
+  link: string;
+  title: string;
+}
+
+export const NavigationLink: FC<NavigationLinkProps> = ({ link, title }) => {
   return (
     <NavLink
       to={link}

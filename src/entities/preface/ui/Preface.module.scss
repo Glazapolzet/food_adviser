@@ -1,0 +1,25 @@
+.preface {
+  display: flex;
+  flex-direction: column;
+
+  &_align_left {
+    align-items: start;
+  }
+
+  &_align_center {
+    align-items: center;
+  }
+
+  &_align_right {
+    align-items: end;
+  }
+}
+
+.headlineContainer {
+  margin: 8px 0 0;
+}
+
+.paragraphContainer {
+  margin: 12px 0 0;
+}
+

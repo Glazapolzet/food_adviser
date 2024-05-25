@@ -1,0 +1,28 @@
+.paragraph {
+  margin: 0;
+  font-family: var(--primary-ff);
+  line-height: 1.2;
+
+  &_type_1 {
+    font-size: 1.125rem;
+    font-weight: var(--fw-regular);
+  }
+
+  &_type_2 {
+    font-size: 1rem;
+    font-weight: var(--fw-light);
+  }
+
+  &_type_3 {
+    font-size: .875rem;
+    font-weight: var(--fw-light);
+  }
+
+  &_theme_light {
+    color: var(--light-paragraph-color);
+  }
+
+  &_theme_dark {
+    color: var(--dark-paragraph-color);
+  }
+}

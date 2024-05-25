@@ -64,9 +64,15 @@ export const Recipes = () => {
   //   return item;
   // });
 
+  const mock = {
+    tagName: "test",
+    title: "test lorem ipsum bla blamet",
+    description: "bla bla bla bla bla bla bla bla bla bla bla bla",
+  };
+
   return (
-    <section>
-      <Preface />
+    <section className={styles.recipes}>
+      <Preface content={mock} theme={"dark"} size={"m"} align={"center"} />
       <TabBar items={recipeTabBarContent} />
       <div>{data}</div>
     </section>

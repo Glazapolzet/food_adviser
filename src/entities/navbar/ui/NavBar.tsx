@@ -1,7 +1,17 @@
 import { NavigationLink } from "shared/ui";
 import styles from "./NavBar.module.scss";
+import { FC } from "react";
 
-export const NavBar = ({ items }) => {
+type NavBarItem = {
+  link: string;
+  title: string;
+};
+
+interface NavBarProps {
+  items: Array<NavBarItem>;
+}
+
+export const NavBar: FC<NavBarProps> = ({ items }) => {
   const navigationContent = items.map((item) => (
     <li key={item.title} className={styles.item}>
       <NavigationLink link={item.link} title={item.title} />

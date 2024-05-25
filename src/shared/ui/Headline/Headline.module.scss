@@ -1,0 +1,30 @@
+.headline {
+  margin: 0;
+  font-family: var(--secondary-ff);
+  line-height: 1;
+
+  &_type_1 {
+    font-size: 5rem;
+    font-weight: var(--fw-extrabold);
+    text-transform: uppercase;
+  }
+
+  &_type_2 {
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+  }
+
+  &_type_3 {
+    font-size: 1.5rem;
+    font-weight: var(--fw-bold);
+  }
+
+  &_theme_light {
+    color: var(--light-headline-color);
+  }
+
+  &_theme_dark {
+    color: var(--dark-headline-color);
+  }
+}

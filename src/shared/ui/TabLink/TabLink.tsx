@@ -3,9 +3,12 @@ import styles from "./TabLink.module.scss";
 import { NavLink } from "react-router-dom";
 import { FC } from "react";
 
-interface TabLinkProps {}
+interface TabLinkProps {
+  link: string;
+  title: string;
+}
 
-export const TabLink = ({ link, title }) => {
+export const TabLink: FC<TabLinkProps> = ({ link, title }) => {
   return (
     <NavLink
       to={link}
