@@ -21,10 +21,10 @@
   }
 
   &_theme_light {
-    color: var(--light-headline-color);
+    color: var(--dark-headline-color);
   }
 
   &_theme_dark {
-    color: var(--dark-headline-color);
+    color: var(--light-headline-color);
   }
 }

@@ -12,11 +12,11 @@ interface NavBarProps {
 }
 
 export const NavBar: FC<NavBarProps> = ({ items }) => {
-  const navigationContent = items.map((item) => (
+  const navigationItems = items.map((item) => (
     <li key={item.title} className={styles.item}>
       <NavigationLink link={item.link} title={item.title} />
     </li>
   ));
 
-  return <ul className={styles.navbar}>{navigationContent}</ul>;
+  return <ul className={styles.navbar}>{navigationItems}</ul>;
 };

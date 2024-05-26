@@ -12,11 +12,11 @@ interface TabBarProps {
 }
 
 export const TabBar: FC<TabBarProps> = ({ items }) => {
-  const tabBarContent = items.map((item) => (
+  const tabBarItems = items.map((item) => (
     <li key={item.title} className={styles.item}>
       <TabLink link={item.link} title={item.title} />
     </li>
   ));
 
-  return <ul className={styles.tabbar}>{tabBarContent}</ul>;
+  return <ul className={styles.tabbar}>{tabBarItems}</ul>;
 };

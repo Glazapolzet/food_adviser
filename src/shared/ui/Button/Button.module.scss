@@ -1,0 +1,33 @@
+.button {
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  font-size: .875rem;
+  font-family: var(--primary-ff);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  opacity: var(--active-element-opacity);
+  text-transform: uppercase;
+  cursor: pointer;
+  will-change: background-color, color, opacity;
+  transition: background-color var(--hover-transition), color var(--hover-transition), opacity var(--hover-transition);
+
+  &_theme_light {
+    background-color: var(--light-button-bg);
+    color: var(--light-button-text);
+
+    &:hover {
+      background-color: var(--dark-button-bg);
+      color: var(--dark-button-text);
+    }
+  }
+
+  &_theme_dark {
+    background-color: var(--dark-button-bg);
+    color: var(--dark-button-text);
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+}

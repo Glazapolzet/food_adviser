@@ -1,15 +1,12 @@
 import styles from "./Recipes.module.scss";
 import { Preface } from "entities/preface";
 import { TabBar } from "entities/tabbar";
-import { recipeTabBarContent } from "shared/consts";
+import { recipeTabBarItems } from "shared/consts";
 import { useLoaderData } from "react-router-dom";
+import { RecipeCardGrid } from "widgets/recipe-card-grid";
 
 export const Recipes = () => {
   const data = useLoaderData();
-
-  // interface Dummy {
-  //   name: null | string;
-  // }
 
   // const [recipes, setRecipes] = useState([
   //   {
@@ -23,7 +20,7 @@ export const Recipes = () => {
   // const navigate = useNavigate();
   // const location = useLocation();
 
-  // const tabBarItems = recipeTabBarContent.map((item) => {
+  // const tabBarItems = recipeTabBarItems.map((item) => {
   //   // console.log(location.pathname);
   //
   //   item.isActive = location.pathname === item.endpoint;
@@ -72,9 +69,11 @@ export const Recipes = () => {
 
   return (
     <section className={styles.recipes}>
-      <Preface content={mock} theme={"dark"} size={"m"} align={"center"} />
-      <TabBar items={recipeTabBarContent} />
-      <div>{data}</div>
+      <Preface content={mock} theme={"light"} size={"m"} align={"center"} />
+      <div className={styles.tabbarContainer}>
+        <TabBar items={recipeTabBarItems} />
+      </div>
+      <RecipeCardGrid items={data} />
     </section>
   );
 };

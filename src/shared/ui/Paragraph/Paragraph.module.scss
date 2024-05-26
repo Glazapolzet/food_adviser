@@ -4,7 +4,7 @@
   line-height: 1.2;
 
   &_type_1 {
-    font-size: 1.125rem;
+    font-size: 1.313rem;
     font-weight: var(--fw-regular);
   }
 
@@ -19,10 +19,10 @@
   }
 
   &_theme_light {
-    color: var(--light-paragraph-color);
+    color: var(--dark-paragraph-color);
   }
 
   &_theme_dark {
-    color: var(--dark-paragraph-color);
+    color: var(--light-paragraph-color);
   }
 }
