@@ -62,9 +62,9 @@ export const Recipes = () => {
   // });
 
   const mock = {
-    tagName: "test",
-    title: "test lorem ipsum bla blamet",
-    description: "bla bla bla bla bla bla bla bla bla bla bla bla",
+    tagName: "lorem",
+    title: "lorem ipsum dolor sit amet",
+    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   };
 
   return (

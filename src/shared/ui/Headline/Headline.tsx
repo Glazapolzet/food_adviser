@@ -6,13 +6,20 @@ interface HeadlineProps {
   title: string;
   type: "1" | "2" | "3";
   theme: "light" | "dark";
+  className?: string;
 }
 
-export const Headline: FC<HeadlineProps> = ({ title, type, theme }) => {
+export const Headline: FC<HeadlineProps> = ({
+  title,
+  type,
+  theme,
+  className,
+}) => {
   const cls = clsx(
     styles.headline,
     styles[`headline_type_${type}`],
     styles[`headline_theme_${theme}`],
+    { [className]: className },
   );
 
   switch (type) {

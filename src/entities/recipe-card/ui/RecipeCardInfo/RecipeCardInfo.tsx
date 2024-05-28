@@ -10,7 +10,7 @@ export const RecipeCardInfo: FC<RecipeCardInfoProps> = ({ content }) => {
   return (
     <div className={styles.info}>
       <p className={styles.text}>
-        {content.timeToCook} - {content.difficulty} - {content.servings}
+        {content.timeToCook} - {content.difficulty} - {content.servings} serves
       </p>
     </div>
   );

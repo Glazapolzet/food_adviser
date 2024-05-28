@@ -16,7 +16,6 @@
 }
 
 .navlink {
-  padding: 8px;
   position: relative;
   font-family: var(--primary-ff);
   font-size: .875rem;
@@ -24,29 +23,42 @@
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--light-button-text);
-  opacity: var(--inactive-element-opacity);
   cursor: pointer;
   will-change: opacity;
   transition: opacity var(--hover-transition);
 
-  &:hover {
-    opacity: var(--active-element-opacity);
-  }
+  &_theme_light {
+    padding: 8px;
+    color: var(--dark-color-2);
+    opacity: var(--inactive-element-opacity);
 
-  &::before {
-    @include navlink_underline($scale: 0);
-  }
-
-  &:hover::before {
-    transform: scaleX(1);
-  }
-
-  &_active {
-    opacity: var(--active-element-opacity);
+    &:hover {
+      opacity: var(--active-element-opacity);
+    }
 
     &::before {
-      @include navlink_underline;
+      @include navlink_underline($scale: 0);
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
     }
   }
+
+  &_theme_dark {
+    color: var(--light-color-2);
+    opacity: var(--active-element-opacity);
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+}
+
+.navlink_theme_light.navlink_active {
+  opacity: var(--active-element-opacity);
+}
+
+.navlink_theme_light.navlink_active::before {
+  @include navlink_underline;
 }

@@ -20,8 +20,18 @@ export const RecipeCard: FC<RecipeCardProps> = ({
       <RecipeCardImage src={content.imageSrc} alt={content.title} />
       <div className={styles.content}>
         <div className={styles.textContainer}>
-          <Headline title={content.title} type={"3"} theme={"light"} />
-          <Paragraph title={content.description} type={"2"} theme={"light"} />
+          <Headline
+            title={content.title}
+            type={"3"}
+            theme={"light"}
+            className={styles.headline}
+          />
+          <Paragraph
+            title={content.description}
+            type={"2"}
+            theme={"light"}
+            className={styles.paragraph}
+          />
         </div>
         <div className={styles.infoContainer}>
           <RecipeCardInfo content={content.info} />

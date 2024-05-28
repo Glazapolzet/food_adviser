@@ -17,6 +17,14 @@
   row-gap: 12px;
 }
 
+.headline {
+  text-transform: capitalize;
+}
+
+.paragraph::first-letter {
+  text-transform: uppercase;
+}
+
 .infoContainer {
   margin: 54px 0 0;
   display: flex;

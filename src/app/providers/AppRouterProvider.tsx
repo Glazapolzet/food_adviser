@@ -7,6 +7,7 @@ import { Layout } from "app/layout/Layout";
 import { Recipes, recipesLoader } from "pages/Recipes";
 import { FC } from "react";
 import { PathNames } from "shared/config";
+import { Recipe, recipeLoader } from "pages/Recipe";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: `${PathNames.RECIPES}/:recipeCategory`,
         element: <Recipes />,
         loader: recipesLoader,
+      },
+      {
+        path: `${PathNames.RECIPES}/:recipeCategory/:recipeId`,
+        element: <Recipe />,
+        loader: recipeLoader,
       },
       {
         path: PathNames.STATS,

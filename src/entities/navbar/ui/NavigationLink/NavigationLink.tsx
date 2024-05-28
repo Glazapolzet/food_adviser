@@ -6,14 +6,19 @@ import { FC } from "react";
 interface NavigationLinkProps {
   link: string;
   title: string;
+  theme: "light" | "dark";
 }
 
-export const NavigationLink: FC<NavigationLinkProps> = ({ link, title }) => {
+export const NavigationLink: FC<NavigationLinkProps> = ({
+  link,
+  title,
+  theme,
+}) => {
   return (
     <NavLink
       to={link}
       className={({ isActive }) =>
-        clsx(styles.navlink, {
+        clsx(styles.navlink, styles[`navlink_theme_${theme}`], {
           [styles.navlink_active]: isActive,
         })
       }

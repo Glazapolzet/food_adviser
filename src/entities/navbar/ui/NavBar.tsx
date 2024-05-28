@@ -1,6 +1,7 @@
-import { NavigationLink } from "shared/ui";
 import styles from "./NavBar.module.scss";
 import { FC } from "react";
+import { NavigationLink } from "entities/navbar/ui/NavigationLink/NavigationLink";
+import { clsx } from "clsx";
 
 type NavBarItem = {
   link: string;
@@ -9,14 +10,19 @@ type NavBarItem = {
 
 interface NavBarProps {
   items: Array<NavBarItem>;
+  theme: "light" | "dark";
 }
 
-export const NavBar: FC<NavBarProps> = ({ items }) => {
+export const NavBar: FC<NavBarProps> = ({ items, theme }) => {
   const navigationItems = items.map((item) => (
     <li key={item.title} className={styles.item}>
-      <NavigationLink link={item.link} title={item.title} />
+      <NavigationLink link={item.link} title={item.title} theme={theme} />
     </li>
   ));
 
-  return <ul className={styles.navbar}>{navigationItems}</ul>;
+  return (
+    <ul className={clsx(styles.navbar, styles[`navbar_theme_${theme}`])}>
+      {navigationItems}
+    </ul>
+  );
 };

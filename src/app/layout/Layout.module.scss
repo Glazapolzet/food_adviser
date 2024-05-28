@@ -1,11 +1,16 @@
 .header {
-  margin: 16px 0 0;
+  margin: 16px 0 16px;
   padding: 0 16px;
 }
 
 .main {
-  margin: 80px 0 0;
   padding: 0 16px;
   display: flex;
   justify-content: center;
+}
+
+.footer {
+  flex-shrink: 0;
+  margin: 16px 0 16px;
+  padding: 0 16px;
 }

@@ -17,9 +17,15 @@
 
 .headlineContainer {
   margin: 8px 0 0;
+  text-align: center;
 }
 
 .paragraphContainer {
   margin: 12px 0 0;
+  text-align: center;
+}
+
+.paragraph::first-letter {
+  text-transform: uppercase;
 }
 

@@ -5,6 +5,7 @@ export type Info = {
 };
 
 export type Card = {
+  id: number;
   imageSrc: string;
   title: string;
   description: string;

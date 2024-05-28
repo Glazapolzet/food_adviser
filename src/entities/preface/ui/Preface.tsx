@@ -27,13 +27,20 @@ export const Preface: FC<PrefaceProps> = ({
   let headlineComponent: JSX.Element;
   let paragraphComponent: JSX.Element;
 
+  const paragraphCls = styles.paragraph;
+
   switch (size) {
     case "l":
       headlineComponent = (
         <Headline title={content.title} type={"1"} theme={theme} />
       );
       paragraphComponent = (
-        <Paragraph title={content.description} type={"1"} theme={theme} />
+        <Paragraph
+          title={content.description}
+          type={"1"}
+          theme={theme}
+          className={paragraphCls}
+        />
       );
       break;
     case "m":
@@ -41,7 +48,12 @@ export const Preface: FC<PrefaceProps> = ({
         <Headline title={content.title} type={"2"} theme={theme} />
       );
       paragraphComponent = (
-        <Paragraph title={content.description} type={"2"} theme={theme} />
+        <Paragraph
+          title={content.description}
+          type={"2"}
+          theme={theme}
+          className={paragraphCls}
+        />
       );
       break;
   }

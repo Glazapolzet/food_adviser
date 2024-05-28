@@ -6,13 +6,20 @@ interface ParagraphProps {
   title: string;
   type: "1" | "2" | "3";
   theme: "light" | "dark";
+  className?: string;
 }
 
-export const Paragraph: FC<ParagraphProps> = ({ title, type, theme }) => {
+export const Paragraph: FC<ParagraphProps> = ({
+  title,
+  type,
+  theme,
+  className,
+}) => {
   const cls = clsx(
     styles.paragraph,
     styles[`paragraph_type_${type}`],
     styles[`paragraph_theme_${theme}`],
+    { [className]: className },
   );
 
   return <p className={cls}>{title}</p>;

@@ -1,2 +1,2 @@
-export { headerNavbarItems } from "./headerNavbarItems";
+export { navbarItems } from "./navbarItems";
 export { recipeTabBarItems } from "./recipeTabBarItems";
