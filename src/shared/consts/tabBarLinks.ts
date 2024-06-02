@@ -1,6 +1,6 @@
 //should be constructed from api call
 
-export const recipeTabBarItems = [
+export const tabBarLinks = [
   { link: "/recipes/all", title: "All" },
   {
     link: "/recipes/breakfast",

@@ -1,2 +1,3 @@
-export { navbarItems } from "./navbarItems";
-export { recipeTabBarItems } from "./recipeTabBarItems";
+export { navbarLinks } from "./navbarLinks";
+export { tabBarLinks } from "./tabBarLinks";
+export { mediaLinks } from "./mediaLinks";

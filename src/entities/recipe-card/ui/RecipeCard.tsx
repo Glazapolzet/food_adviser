@@ -4,10 +4,10 @@ import styles from "./RecipeCard.module.scss";
 import { Headline } from "shared/ui";
 import { Paragraph } from "shared/ui/Paragraph/Paragraph";
 import { RecipeCardInfo } from "entities/recipe-card/ui/RecipeCardInfo/RecipeCardInfo";
-import { RecipeCardTypes } from "entities/recipe-card/model";
+import { TRecipe } from "shared/api/recipes";
 
 interface RecipeCardProps {
-  content: RecipeCardTypes.Card;
+  content: TRecipe;
   buttonComponent: ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
@@ -15,9 +15,11 @@ export const RecipeCard: FC<RecipeCardProps> = ({
   content,
   buttonComponent,
 }) => {
+  const { timeToCook, difficulty, servings } = content;
+
   return (
     <div className={styles.card}>
-      <RecipeCardImage src={content.imageSrc} alt={content.title} />
+      <RecipeCardImage src={content.cover} alt={content.title} />
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <Headline
@@ -34,7 +36,7 @@ export const RecipeCard: FC<RecipeCardProps> = ({
           />
         </div>
         <div className={styles.infoContainer}>
-          <RecipeCardInfo content={content.info} />
+          <RecipeCardInfo content={{ timeToCook, difficulty, servings }} />
           {buttonComponent}
         </div>
       </div>

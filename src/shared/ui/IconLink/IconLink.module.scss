@@ -1,0 +1,11 @@
+.link {
+  display: flex;
+  will-change: opacity;
+  transition: opacity var(--hover-transition);
+}
+
+.link:hover {
+  opacity: .6;
+}
+
+.icon {}

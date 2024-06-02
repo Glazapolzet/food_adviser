@@ -22,12 +22,12 @@ const router = createBrowserRouter([
         element: <Navigate to={"all"} replace={true} />,
       },
       {
-        path: `${PathNames.RECIPES}/:recipeCategory`,
+        path: `${PathNames.RECIPES}/:recipesCategory`,
         element: <Recipes />,
         loader: recipesLoader,
       },
       {
-        path: `${PathNames.RECIPES}/:recipeCategory/:recipeId`,
+        path: `${PathNames.RECIPES}/:recipesCategory/:recipeId`,
         element: <Recipe />,
         loader: recipeLoader,
       },

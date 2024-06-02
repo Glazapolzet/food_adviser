@@ -49,8 +49,16 @@
 }
 
 .mediaContainer {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   justify-self: end;
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
 }
+
+.mediaItem {}
 
 .copyrightContainer {
   margin: 15px 0 24px;

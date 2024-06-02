@@ -8,6 +8,10 @@
 }
 
 .content {
+  min-height: 217px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 24px 24px 16px;
 }
 
@@ -26,7 +30,6 @@
 }
 
 .infoContainer {
-  margin: 54px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

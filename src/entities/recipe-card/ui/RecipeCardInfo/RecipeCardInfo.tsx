@@ -1,9 +1,12 @@
 import { FC } from "react";
-import { RecipeCardTypes } from "entities/recipe-card/model";
 import styles from "./RecipeCardInfo.module.scss";
 
 interface RecipeCardInfoProps {
-  content: RecipeCardTypes.Info;
+  content: {
+    timeToCook: number;
+    difficulty: string;
+    servings: number;
+  };
 }
 
 export const RecipeCardInfo: FC<RecipeCardInfoProps> = ({ content }) => {
