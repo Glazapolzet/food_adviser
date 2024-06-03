@@ -15,7 +15,7 @@ export const RecipeCardGrid: FC<RecipeCardGridProps> = ({ items }) => {
   const recipeCards = items.map((item) => {
     const handleClick = () => {
       console.log("ok");
-      navigate(`${item.id}`);
+      navigate(`/recipes/${item.id}`);
     };
 
     return (

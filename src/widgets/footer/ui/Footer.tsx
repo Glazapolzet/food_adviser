@@ -1,8 +1,8 @@
 import styles from "./Footer.module.scss";
 import logo from "assets/icons/pepicons-print_hamburger-circle-filled_monochrome.svg";
 import { NavBar } from "entities/navbar";
-import { navbarLinks } from "shared/consts";
-import { mediaLinks } from "shared/consts";
+import { navbarLinks } from "shared/constants";
+import { mediaLinks } from "shared/constants";
 import { IconLink } from "shared/ui/IconLink/IconLink";
 
 export const Footer = () => {
@@ -22,7 +22,7 @@ export const Footer = () => {
         <ul className={styles.mediaContainer}>
           {mediaLinks.map((media) => (
             <li key={media.link} className={styles.mediaItem}>
-              <IconLink icon={media.icon} link={media.link} />
+              <IconLink icon={media.icon} link={media.link} target={"_blank"} />
             </li>
           ))}
         </ul>

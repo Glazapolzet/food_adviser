@@ -1,4 +1,4 @@
-export async function recipeLoader({ params }) {
+export async function loader({ params }) {
   // console.log(params);
 
   const mockApiResponce = params.recipeId;

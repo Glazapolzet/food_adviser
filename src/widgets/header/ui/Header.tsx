@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss";
 import { NavBar } from "entities/navbar";
-import { navbarLinks } from "shared/consts";
+import { navbarLinks } from "shared/constants";
 import logo from "assets/icons/pepicons-print_hamburger-circle-filled.svg";
 
 export const Header = () => {
