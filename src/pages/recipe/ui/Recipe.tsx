@@ -12,7 +12,7 @@ export const Recipe = () => {
   };
 
   return (
-    <section className={styles.recipes}>
+    <section className={styles.recipe}>
       <Preface content={mock} theme={"light"} size={"m"} align={"center"} />
     </section>
   );

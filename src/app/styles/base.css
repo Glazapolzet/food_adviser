@@ -1,9 +1,6 @@
-html {
-  height: 100%;
-}
+html {}
 
 body {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,11 +9,7 @@ body {
 
 #root {
   width: 100%;
-  height: 100%;
   max-width: 1313px;
-
-  flex: 1 0 auto;
-
-  /*display: grid;*/
-  /*grid-template-rows: auto 1fr auto;*/
+  display: flex;
+  flex-direction: column;
 }

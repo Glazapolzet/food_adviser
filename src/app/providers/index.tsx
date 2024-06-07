@@ -1,5 +1,10 @@
 import { AppRouterProvider } from "./AppRouterProvider";
+import { MockApiProvider } from "./MockApiProvider";
 
 export const Provider = () => {
-  return <AppRouterProvider />;
+  return (
+    <MockApiProvider>
+      <AppRouterProvider />
+    </MockApiProvider>
+  );
 };

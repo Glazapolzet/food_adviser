@@ -1,16 +1,22 @@
 import styles from "./Categories.module.scss";
 import { Preface } from "entities/preface";
 import { TabBar } from "entities/tabbar";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, generatePath } from "react-router-dom";
 import { FC } from "react";
 import { TCategory } from "shared/api/categories";
+import { PATH_CONFIG } from "shared/config";
 
 export const Categories: FC = () => {
   const categories: Array<TCategory> = useLoaderData();
 
   const tabBarLinks = categories.map((category) => {
     return {
-      link: `/recipes/categories/${category.name}`,
+      link: generatePath(
+        PATH_CONFIG.root.recipes.categories.category.fullPath,
+        {
+          categoryName: category.name,
+        },
+      ),
       title: category.name,
     };
   });

@@ -1,8 +1,8 @@
 import styles from "./Footer.module.scss";
 import logo from "assets/icons/pepicons-print_hamburger-circle-filled_monochrome.svg";
 import { NavBar } from "entities/navbar";
-import { navbarLinks } from "shared/constants";
-import { mediaLinks } from "shared/constants";
+import { navbarLinks } from "shared/config";
+import { mediaLinks } from "shared/config";
 import { IconLink } from "shared/ui/IconLink/IconLink";
 
 export const Footer = () => {

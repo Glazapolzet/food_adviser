@@ -2,8 +2,9 @@ import styles from "./RecipeCardGrid.module.scss";
 import { FC } from "react";
 import { RecipeCard } from "entities/recipe-card";
 import { Button } from "shared/ui/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, generatePath } from "react-router-dom";
 import { TRecipe } from "shared/api/recipes";
+import { PATH_CONFIG } from "shared/config";
 
 interface RecipeCardGridProps {
   items: Array<TRecipe>;
@@ -14,8 +15,11 @@ export const RecipeCardGrid: FC<RecipeCardGridProps> = ({ items }) => {
 
   const recipeCards = items.map((item) => {
     const handleClick = () => {
-      console.log("ok");
-      navigate(`/recipes/${item.id}`);
+      navigate(
+        generatePath(PATH_CONFIG.root.recipes.recipe.fullPath, {
+          recipeId: item.id,
+        }),
+      );
     };
 
     return (

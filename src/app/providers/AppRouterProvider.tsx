@@ -12,32 +12,61 @@ import {
   RecipesFromCategory,
   recipesFromCategoryLoader,
 } from "pages/recipes-from-category";
+import { PATH_CONFIG } from "shared/config";
+import { Preface } from "entities/preface";
 
-const routes_config: RouteObject = {
+const prefaceData = {
+  tagName: "Recipes",
+  title: "Самое время пожрать",
+  description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+};
+
+const routes: RouteObject = {
   id: "root",
-  path: "",
+  path: PATH_CONFIG.root.path,
   element: <Layout />,
   errorElement: <div>Page 404</div>,
   children: [
     {
       id: "home",
-      path: "",
-      element: <div>home</div>,
+      path: PATH_CONFIG.root.home.path,
+      element: (
+        <div>
+          <Preface
+            content={prefaceData}
+            theme={"light"}
+            size={"l"}
+            align={"center"}
+          />
+          <Preface
+            content={prefaceData}
+            theme={"light"}
+            size={"l"}
+            align={"center"}
+          />
+          <Preface
+            content={prefaceData}
+            theme={"light"}
+            size={"l"}
+            align={"center"}
+          />
+        </div>
+      ),
     },
     {
       id: "recipes",
-      path: "recipes",
-      element: <RecipesCategoryRedirect />,
+      path: PATH_CONFIG.root.recipes.path,
+      element: <RecipesCategoryRedirect categoryName={"all"} />,
       children: [
         {
           id: "categories",
-          path: "categories",
+          path: PATH_CONFIG.root.recipes.categories.path,
           element: <Categories />,
           loader: categoriesLoader,
           children: [
             {
               id: "category",
-              path: ":categoryName",
+              path: PATH_CONFIG.root.recipes.categories.category.path,
               element: <RecipesFromCategory />,
               loader: recipesFromCategoryLoader,
             },
@@ -45,7 +74,7 @@ const routes_config: RouteObject = {
         },
         {
           id: "recipe",
-          path: ":recipeId",
+          path: PATH_CONFIG.root.recipes.recipe.path,
           element: <Recipe />,
           loader: recipeLoader,
         },
@@ -53,44 +82,12 @@ const routes_config: RouteObject = {
     },
     {
       id: "stats",
-      path: "stats",
+      path: PATH_CONFIG.root.stats.path,
       element: <div>stats</div>,
     },
   ],
 };
 
-// const router: Array<RouteObject> = createBrowserRouter([
-//   {
-//     element: <Layout />,
-//     errorElement: <div>Page 404</div>,
-//     children: [
-//       {
-//         path: "/",
-//         element: <div>home</div>,
-//         index: true,
-//       },
-//       {
-//         path: "/recipes-category-redirect",
-//         element: <Navigate to={"all"} replace={true} />,
-//       },
-//       {
-//         path: `/recipes-category-redirect/:recipesCategory`,
-//         element: <categories />,
-//         loader: loader,
-//       },
-//       {
-//         path: `/recipes-category-redirect/:recipesCategory/:recipeId`,
-//         element: <recipe />,
-//         loader: loader,
-//       },
-//       {
-//         path: "/stats",
-//         element: <div>stats</div>,
-//       },
-//     ],
-//   },
-// ]);
-
 export const AppRouterProvider: FC = () => {
-  return <RouterProvider router={createBrowserRouter([routes_config])} />;
+  return <RouterProvider router={createBrowserRouter([routes])} />;
 };

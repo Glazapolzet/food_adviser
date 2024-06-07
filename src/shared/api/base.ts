@@ -1,4 +1,4 @@
-const BASE_URL = "https://1a57c5c8-2769-4204-a67d-2222b1ef59b4.mock.pstmn.io";
+const BASE_URL = "http://localhost:8080";
 
 const headers = {
   "Content-Type": "application/json",
