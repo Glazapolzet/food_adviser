@@ -19,13 +19,11 @@ class Wiremock {
   private async _createStubs() {
     const createAllRecipesByCategories = async () => {
       for (const category of CATEGORIES) {
-        const recipesPromise = await createGetRecipesByCategory(
+        await createGetRecipesByCategory(
           this.wiremockMappingsUrl,
           category.name,
           category.content,
         );
-
-        console.log({ recipesPromise });
       }
     };
 

@@ -1,14 +1,9 @@
-import { ButtonHTMLAttributes, FC, lazy } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import styles from "./RecipeCard.module.scss";
 import { Headline, Paragraph } from "shared/ui";
 import { RecipeCardInfo } from "./RecipeCardInfo/RecipeCardInfo";
 import { TRecipe } from "shared/api/recipes";
-
-const RecipeCardImage = lazy(() =>
-  import("./RecipeCardImage/RecipeCardImage").then(({ RecipeCardImage }) => ({
-    default: RecipeCardImage,
-  })),
-);
+import { RecipeCardImage } from "./RecipeCardImage/RecipeCardImage";
 
 interface RecipeCardProps {
   content: TRecipe;
@@ -23,7 +18,11 @@ export const RecipeCard: FC<RecipeCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <RecipeCardImage src={content.cover} alt={content.title} />
+      <RecipeCardImage
+        src={content.cover}
+        alt={content.title}
+        loading={"lazy"}
+      />
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <Headline
