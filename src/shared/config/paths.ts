@@ -1,3 +1,20 @@
+// type PathPropsUnnested = {
+//   id: string;
+//   path: string;
+//   fullPath: string;
+// };
+//
+// type PathProps = {
+//   id: string;
+//   path: string;
+//   fullPath: string;
+//   [key: string]: PathProps | PathPropsUnnested;
+// };
+//
+// type PathConfigProps = {
+//   [key: string]: PathProps | PathPropsUnnested;
+// };
+
 export const PATH_CONFIG = {
   root: {
     id: "root",
@@ -26,4 +43,4 @@ export const PATH_CONFIG = {
     },
     stats: { id: "stats", path: "stats", fullPath: "/stats" },
   },
-};
+} as const;

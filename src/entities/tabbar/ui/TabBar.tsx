@@ -1,6 +1,6 @@
 import styles from "./TabBar.module.scss";
 import { FC } from "react";
-import { TabLink } from "entities/tabbar/ui/TabLink/TabLink";
+import { TabLink } from "./TabLink/TabLink";
 
 type TabBarItem = {
   link: string;

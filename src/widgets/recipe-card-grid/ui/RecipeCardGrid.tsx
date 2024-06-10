@@ -1,6 +1,6 @@
 import styles from "./RecipeCardGrid.module.scss";
 import { FC } from "react";
-import { Button } from "shared/ui/Button/Button";
+import { Button } from "shared/ui";
 import { useNavigate, generatePath } from "react-router-dom";
 import { TRecipe } from "shared/api/recipes";
 import { PATH_CONFIG } from "shared/config";

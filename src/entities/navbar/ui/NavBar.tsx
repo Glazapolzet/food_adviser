@@ -1,6 +1,6 @@
 import styles from "./NavBar.module.scss";
 import { FC } from "react";
-import { NavigationLink } from "entities/navbar/ui/NavigationLink/NavigationLink";
+import { NavigationLink } from "./NavigationLink/NavigationLink";
 import { clsx } from "clsx";
 
 type NavBarItem = {

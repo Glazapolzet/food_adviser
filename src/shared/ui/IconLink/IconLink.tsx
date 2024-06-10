@@ -1,20 +1,15 @@
 import { FC } from "react";
 import styles from "./IconLink.module.scss";
-import { Link } from "react-router-dom";
+import { Link, type LinkProps } from "react-router-dom";
 
-interface IconLinkProps {
+interface IconLinkProps extends Omit<LinkProps, "to"> {
   icon: string;
   link: string;
-  target?: string;
 }
 
-export const IconLink: FC<IconLinkProps> = ({
-  icon,
-  link,
-  target = "_self",
-}) => {
+export const IconLink: FC<IconLinkProps> = ({ icon, link, ...props }) => {
   return (
-    <Link className={styles.link} to={link} target={target}>
+    <Link className={styles.link} to={link} {...props}>
       <img className={styles.icon} src={icon} alt={link} />
     </Link>
   );

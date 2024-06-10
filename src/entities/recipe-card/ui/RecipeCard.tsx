@@ -1,7 +1,6 @@
-import { ButtonHTMLAttributes, FC, lazy, Suspense } from "react";
+import { ButtonHTMLAttributes, FC, lazy } from "react";
 import styles from "./RecipeCard.module.scss";
-import { Headline } from "shared/ui";
-import { Paragraph } from "shared/ui/Paragraph/Paragraph";
+import { Headline, Paragraph } from "shared/ui";
 import { RecipeCardInfo } from "./RecipeCardInfo/RecipeCardInfo";
 import { TRecipe } from "shared/api/recipes";
 
@@ -24,9 +23,7 @@ export const RecipeCard: FC<RecipeCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <Suspense>
-        <RecipeCardImage src={content.cover} alt={content.title} />
-      </Suspense>
+      <RecipeCardImage src={content.cover} alt={content.title} />
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <Headline

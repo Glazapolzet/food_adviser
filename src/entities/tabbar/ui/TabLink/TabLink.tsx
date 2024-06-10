@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
 import styles from "./TabLink.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, type NavLinkProps } from "react-router-dom";
 import { FC } from "react";
 
-interface TabLinkProps {
+interface TabLinkProps extends Omit<NavLinkProps, "to"> {
   link: string;
   title: string;
 }

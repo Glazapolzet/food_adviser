@@ -1,4 +1,4 @@
-import { PATH_CONFIG } from "shared/config/paths";
+import { PATH_CONFIG } from "./paths";
 
 export const navbarLinks = [
   { link: PATH_CONFIG.root.home.fullPath, title: "Home" },

@@ -1,9 +1,7 @@
 import styles from "./Preface.module.scss";
-import { Headline, Tag } from "shared/ui";
+import { Headline, Tag, Paragraph } from "shared/ui";
 import { FC, JSX } from "react";
 import { clsx } from "clsx";
-import * as React from "react";
-import { Paragraph } from "shared/ui/Paragraph/Paragraph";
 
 type PrefaceContent = {
   tagName: string;
