@@ -1,10 +1,15 @@
-import { ButtonHTMLAttributes, FC } from "react";
-import { RecipeCardImage } from "entities/recipe-card/ui/RecipeCardImage/RecipeCardImage";
+import { ButtonHTMLAttributes, FC, lazy, Suspense } from "react";
 import styles from "./RecipeCard.module.scss";
 import { Headline } from "shared/ui";
 import { Paragraph } from "shared/ui/Paragraph/Paragraph";
-import { RecipeCardInfo } from "entities/recipe-card/ui/RecipeCardInfo/RecipeCardInfo";
+import { RecipeCardInfo } from "./RecipeCardInfo/RecipeCardInfo";
 import { TRecipe } from "shared/api/recipes";
+
+const RecipeCardImage = lazy(() =>
+  import("./RecipeCardImage/RecipeCardImage").then(({ RecipeCardImage }) => ({
+    default: RecipeCardImage,
+  })),
+);
 
 interface RecipeCardProps {
   content: TRecipe;
@@ -19,7 +24,9 @@ export const RecipeCard: FC<RecipeCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <RecipeCardImage src={content.cover} alt={content.title} />
+      <Suspense>
+        <RecipeCardImage src={content.cover} alt={content.title} />
+      </Suspense>
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <Headline

@@ -1,7 +1,7 @@
 import { createGetAllCategories } from "./stubs/createGetAllCategories";
 import { createGetRecipesByCategory } from "./stubs/createGetRecipesByCategory";
 import { CATEGORIES } from "./mockData/categories";
-import { destroyAllStubs } from "./stubs/destroyAllStubs";
+import { destroyStubs } from "./stubs/destroyStubs";
 
 const WIREMOCK_BASE_URL = "http://localhost:8080";
 
@@ -12,27 +12,36 @@ class Wiremock {
     this.wiremockMappingsUrl = wiremockUrl + "/__admin/mappings";
   }
 
-  private handleError(error) {
-    console.log(error);
+  private _handleError(error) {
+    console.error(error);
+  }
+
+  private async _createStubs() {
+    const createAllRecipesByCategories = async () => {
+      for (const category of CATEGORIES) {
+        const recipesPromise = await createGetRecipesByCategory(
+          this.wiremockMappingsUrl,
+          category.name,
+          category.content,
+        );
+
+        console.log({ recipesPromise });
+      }
+    };
+
+    await Promise.all([
+      createGetAllCategories(this.wiremockMappingsUrl, CATEGORIES),
+      createAllRecipesByCategories(),
+    ]);
   }
 
   init() {
-    createGetAllCategories(this.wiremockMappingsUrl, CATEGORIES).catch((err) =>
-      this.handleError(err),
-    );
-
-    CATEGORIES.forEach((category) => {
-      createGetRecipesByCategory(
-        this.wiremockMappingsUrl,
-        category.name,
-        category.content,
-      ).catch((err) => this.handleError(err));
-    });
+    this._createStubs().catch((err) => this._handleError(err));
   }
 
   destroy() {
-    destroyAllStubs(this.wiremockMappingsUrl).catch((err) =>
-      this.handleError(err),
+    destroyStubs(this.wiremockMappingsUrl).catch((err) =>
+      this._handleError(err),
     );
   }
 }

@@ -1,4 +1,4 @@
-export const destroyAllStubs = (wiremockMappingsUrl: string) => {
+export const destroyStubs = (wiremockMappingsUrl: string) => {
   return fetch(wiremockMappingsUrl, {
     method: "DELETE",
   });

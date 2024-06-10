@@ -13,13 +13,6 @@ import {
   recipesFromCategoryLoader,
 } from "pages/recipes-from-category";
 import { PATH_CONFIG } from "shared/config";
-import { Preface } from "entities/preface";
-
-const prefaceData = {
-  tagName: "Recipes",
-  title: "Самое время пожрать",
-  description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-};
 
 const routes: RouteObject = {
   id: "root",
@@ -30,28 +23,7 @@ const routes: RouteObject = {
     {
       id: "home",
       path: PATH_CONFIG.root.home.path,
-      element: (
-        <div>
-          <Preface
-            content={prefaceData}
-            theme={"light"}
-            size={"l"}
-            align={"center"}
-          />
-          <Preface
-            content={prefaceData}
-            theme={"light"}
-            size={"l"}
-            align={"center"}
-          />
-          <Preface
-            content={prefaceData}
-            theme={"light"}
-            size={"l"}
-            align={"center"}
-          />
-        </div>
-      ),
+      element: <div>home</div>,
     },
     {
       id: "recipes",

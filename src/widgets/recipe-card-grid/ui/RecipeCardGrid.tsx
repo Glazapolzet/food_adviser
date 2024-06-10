@@ -1,10 +1,10 @@
 import styles from "./RecipeCardGrid.module.scss";
 import { FC } from "react";
-import { RecipeCard } from "entities/recipe-card";
 import { Button } from "shared/ui/Button/Button";
 import { useNavigate, generatePath } from "react-router-dom";
 import { TRecipe } from "shared/api/recipes";
 import { PATH_CONFIG } from "shared/config";
+import { RecipeCard } from "entities/recipe-card";
 
 interface RecipeCardGridProps {
   items: Array<TRecipe>;

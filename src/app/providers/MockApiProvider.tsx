@@ -1,7 +1,11 @@
 import { FC, useEffect } from "react";
 import { wiremockInstance } from "shared/wiremock";
 
-export const MockApiProvider: FC = ({ children }) => {
+interface MockApiProviderProps {
+  children: FC;
+}
+
+export const MockApiProvider: FC<MockApiProviderProps> = ({ children }) => {
   useEffect(() => {
     wiremockInstance.init();
 
