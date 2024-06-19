@@ -19,7 +19,7 @@ export const PATH_CONFIG = {
   root: {
     id: "root",
     path: "",
-    fullPath: "",
+    fullPath: "/",
     home: { id: "home", path: "", fullPath: "/" },
     recipes: {
       id: "recipes",

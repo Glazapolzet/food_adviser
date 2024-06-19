@@ -2,13 +2,16 @@ import { FC, lazy } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
+  generatePath,
   type RouteObject,
 } from "react-router-dom";
 import { Layout } from "../layout/Layout";
 const Categories = lazy(() => import("pages/categories"));
 const Recipe = lazy(() => import("pages/recipe"));
-const RecipesCategoryRedirect = lazy(
-  () => import("pages/recipes-category-redirect"),
+const Redirect = lazy(() =>
+  import("features/redirect").then(({ Redirect }) => ({
+    default: Redirect,
+  })),
 );
 const RecipesFromCategory = lazy(() => import("pages/recipes-from-category"));
 import { categoriesLoader } from "pages/categories";
@@ -30,7 +33,18 @@ const routes: RouteObject = {
     {
       id: "recipes",
       path: PATH_CONFIG.root.recipes.path,
-      element: <RecipesCategoryRedirect categoryName={"all"} />,
+      element: (
+        <Redirect
+          from={PATH_CONFIG.root.recipes.fullPath}
+          to={generatePath(
+            PATH_CONFIG.root.recipes.categories.category.fullPath,
+            {
+              categoryName: "all",
+            },
+          )}
+          options={{ replace: true }}
+        />
+      ),
       children: [
         {
           id: "categories",
