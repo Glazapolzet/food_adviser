@@ -1,3 +1,4 @@
+import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
 import { getRecipes, TRecipe } from "shared/api/recipes";
 
 type DynamicPathParams = {
@@ -6,8 +7,8 @@ type DynamicPathParams = {
   };
 };
 
-export async function loader({
+export const loader: LoaderFunction = async ({
   params,
-}: DynamicPathParams): Promise<Array<TRecipe>> {
-  return await getRecipes(params.categoryName);
-}
+}: LoaderFunctionArgs<DynamicPathParams>): Promise<Array<TRecipe>> => {
+  return await getRecipes(params.categoryName ?? "");
+};

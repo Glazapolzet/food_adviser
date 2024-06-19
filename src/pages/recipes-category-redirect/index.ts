@@ -1,1 +1,1 @@
-export { RecipesCategoryRedirect } from "./ui/RecipesCategoryRedirect";
+export { RecipesCategoryRedirect as default } from "./ui/RecipesCategoryRedirect";

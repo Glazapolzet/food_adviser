@@ -7,7 +7,7 @@ import { TCategory } from "shared/api/categories";
 import { PATH_CONFIG } from "shared/config";
 
 export const Categories: FC = () => {
-  const categories: Array<TCategory> = useLoaderData();
+  const categories: Array<TCategory> = useLoaderData() as Array<TCategory>;
 
   const tabBarLinks = categories.map((category) => {
     return {

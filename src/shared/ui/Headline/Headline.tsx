@@ -19,7 +19,7 @@ export const Headline: FC<HeadlineProps> = ({
     styles.headline,
     styles[`headline_type_${type}`],
     styles[`headline_theme_${theme}`],
-    { [className]: className },
+    { [className ?? ""]: className },
   );
 
   switch (type) {

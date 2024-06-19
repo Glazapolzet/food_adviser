@@ -1,17 +1,19 @@
+import { FC, lazy } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
   type RouteObject,
 } from "react-router-dom";
-import { Layout } from "app/layout/Layout";
-import { Categories, categoriesLoader } from "pages/categories";
-import { FC } from "react";
-import { Recipe, recipeLoader } from "pages/recipe";
-import { RecipesCategoryRedirect } from "pages/recipes-category-redirect";
-import {
-  RecipesFromCategory,
-  recipesFromCategoryLoader,
-} from "pages/recipes-from-category";
+import { Layout } from "../layout/Layout";
+const Categories = lazy(() => import("pages/categories"));
+const Recipe = lazy(() => import("pages/recipe"));
+const RecipesCategoryRedirect = lazy(
+  () => import("pages/recipes-category-redirect"),
+);
+const RecipesFromCategory = lazy(() => import("pages/recipes-from-category"));
+import { categoriesLoader } from "pages/categories";
+import { recipeLoader } from "pages/recipe";
+import { recipesFromCategoryLoader } from "pages/recipes-from-category";
 import { PATH_CONFIG } from "shared/config";
 
 const routes: RouteObject = {

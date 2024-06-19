@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { ComponentProps, FC } from "react";
 import { clsx } from "clsx";
 import styles from "./Button.module.scss";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ComponentProps<"button"> {
   title: string;
   theme: "light" | "dark";
 }

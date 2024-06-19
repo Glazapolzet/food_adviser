@@ -1,13 +1,15 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { FC, ReactNode } from "react";
 import styles from "./RecipeCard.module.scss";
 import { Headline, Paragraph } from "shared/ui";
 import { RecipeCardInfo } from "./RecipeCardInfo/RecipeCardInfo";
 import { TRecipe } from "shared/api/recipes";
 import { RecipeCardImage } from "./RecipeCardImage/RecipeCardImage";
 
+//TODO: убрать ReactNode и сделать более жесткую проверку на тип кнопки
+
 interface RecipeCardProps {
   content: TRecipe;
-  buttonComponent: ButtonHTMLAttributes<HTMLButtonElement>;
+  buttonComponent: ReactNode;
 }
 
 export const RecipeCard: FC<RecipeCardProps> = ({

@@ -1,7 +1,14 @@
-export async function loader({ params }) {
-  // console.log(params);
+import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
 
-  const mockApiResponce = params.recipeId;
+type DynamicPathParams = {
+  params: {
+    recipeId: string;
+  };
+};
 
-  return mockApiResponce;
-}
+export const loader: LoaderFunction = async ({
+  params,
+  // eslint-disable-next-line @typescript-eslint/require-await
+}: LoaderFunctionArgs<DynamicPathParams>): Promise<string> => {
+  return params.recipeId ?? "";
+};

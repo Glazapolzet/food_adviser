@@ -3,12 +3,12 @@ import { Preface } from "entities/preface";
 import { useLoaderData } from "react-router-dom";
 
 export const Recipe = () => {
-  const id = useLoaderData();
+  const id: string = useLoaderData() as string;
 
   const mock = {
-    tagName: `id: ${id}`,
-    title: "test lorem ipsum bla blamet",
-    description: "bla bla bla bla bla bla bla bla bla bla bla bla",
+    tagName: "id of recipe",
+    title: `${id}`,
+    description: "This is mock description",
   };
 
   return (

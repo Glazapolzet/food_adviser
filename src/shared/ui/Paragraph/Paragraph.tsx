@@ -19,7 +19,7 @@ export const Paragraph: FC<ParagraphProps> = ({
     styles.paragraph,
     styles[`paragraph_type_${type}`],
     styles[`paragraph_theme_${theme}`],
-    { [className]: className },
+    { [className ?? ""]: className },
   );
 
   return <p className={cls}>{title}</p>;

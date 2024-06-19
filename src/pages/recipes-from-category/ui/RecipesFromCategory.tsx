@@ -4,7 +4,7 @@ import { RecipeCardGrid } from "widgets/recipe-card-grid";
 import { TRecipe } from "shared/api/recipes";
 
 export const RecipesFromCategory: FC = () => {
-  const data: Array<TRecipe> = useLoaderData();
+  const data: Array<TRecipe> = useLoaderData() as Array<TRecipe>;
 
   return <RecipeCardGrid items={data} />;
 };
