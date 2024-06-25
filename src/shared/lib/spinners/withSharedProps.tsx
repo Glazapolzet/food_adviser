@@ -1,8 +1,8 @@
-import { ComponentType, CSSProperties } from "react";
+import { ComponentType } from "react";
 import { SpinnerProps } from "./types";
 import { SPINNER_DEFAULTS } from "shared/lib/spinners/defaults";
 
-const normalizeSize = (size: CSSProperties["width"]) =>
+const normalizeSize = (size: string | number) =>
   parseFloat(size.toString()).toString() === size.toString()
     ? `${size}px`
     : size.toString();

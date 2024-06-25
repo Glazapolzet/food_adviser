@@ -1,5 +1,5 @@
 import { LoaderFunction, LoaderFunctionArgs, defer } from "react-router-dom";
-import { getRecipes, TRecipe } from "shared/api/recipes";
+import { getRecipes } from "shared/api/recipes";
 
 type DynamicPathParams = {
   params: {
@@ -7,12 +7,8 @@ type DynamicPathParams = {
   };
 };
 
-type ReturnParams = {
-  recipes: Promise<Array<TRecipe>>;
-};
-
 export const loader: LoaderFunction = ({
   params,
-}: LoaderFunctionArgs<DynamicPathParams>): Promise<ReturnParams> => {
+}: LoaderFunctionArgs<DynamicPathParams>) => {
   return defer({ recipes: getRecipes(params.categoryName ?? "") });
 };

@@ -7,7 +7,7 @@ import { TCategory } from "shared/api/categories";
 import { PATH_CONFIG } from "shared/config";
 
 export const Categories: FC = () => {
-  const data: { categories: Promise<Array<TCategory>> } = useLoaderData();
+  const data = useLoaderData() as { categories: Promise<Array<TCategory>> };
 
   const prefaceData = {
     tagName: "Recipes",

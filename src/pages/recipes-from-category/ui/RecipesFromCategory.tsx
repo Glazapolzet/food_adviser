@@ -7,7 +7,7 @@ import {
 import { TRecipe } from "shared/api/recipes";
 
 export const RecipesFromCategory: FC = () => {
-  const data: { recipes: Promise<Array<TRecipe>> } = useLoaderData();
+  const data = useLoaderData() as { recipes: Promise<Array<TRecipe>> };
 
   return (
     <Suspense fallback={<RecipeCardGridSkeleton count={1} />}>

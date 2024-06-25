@@ -8,7 +8,7 @@ import {
 
 interface RedirectProps {
   from: string;
-  to: string | number;
+  to: string;
   options?: NavigateOptions;
 }
 
