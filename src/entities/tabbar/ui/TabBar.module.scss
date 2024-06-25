@@ -1,11 +1,9 @@
+@use './Skeleton/TabBarSkeleton.module.scss' as skeleton;
+
 .tabbar {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  column-gap: 16px;
-  justify-content: center;
+  @include skeleton.tabbar;
 }
 
 .item {
+  @include skeleton.item;
 }

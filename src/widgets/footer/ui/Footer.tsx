@@ -27,7 +27,9 @@ export const Footer = () => {
         </ul>
       </div>
       <div className={styles.copyrightContainer}>
-        <p className={styles.copyright}>Copyright: © 2024 Cooks Delight.</p>
+        <p className={styles.copyright}>
+          Copyright: &copy;{new Date().getFullYear()} Myself.
+        </p>
       </div>
     </div>
   );

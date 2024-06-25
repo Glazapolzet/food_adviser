@@ -4,7 +4,7 @@
   padding: 0 24px;
   min-height: 70px;
   align-items: center;
-  background-color: transparent;
+  background-color: var(--light-color-1);
   border: 1px solid var(--dim-border-color);
   border-radius: 32px;
 }
@@ -34,7 +34,7 @@
   color: var(--dark-color-2);
   font-family: var(--primary-ff);
   font-size: 0.938rem;
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
 }
 
 .navbarContainer {

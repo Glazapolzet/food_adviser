@@ -1,16 +1,16 @@
-import { ComponentProps, FC } from "react";
+import { ComponentProps, FC, ReactNode } from "react";
 import { clsx } from "clsx";
 import styles from "./Button.module.scss";
 
 interface ButtonProps extends ComponentProps<"button"> {
-  title: string;
   theme: "light" | "dark";
+  children: ReactNode;
 }
 
 export const Button: FC<ButtonProps> = ({
-  title,
   theme,
   onClick,
+  children,
   ...props
 }) => {
   return (
@@ -19,7 +19,7 @@ export const Button: FC<ButtonProps> = ({
       onClick={onClick}
       {...props}
     >
-      {title}
+      {children}
     </button>
   );
 };

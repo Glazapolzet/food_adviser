@@ -1,19 +1,19 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { clsx } from "clsx";
 import styles from "./Paragraph.module.scss";
 
 interface ParagraphProps {
-  title: string;
   type: "1" | "2" | "3";
   theme: "light" | "dark";
   className?: string;
+  children: ReactNode;
 }
 
 export const Paragraph: FC<ParagraphProps> = ({
-  title,
   type,
   theme,
   className,
+  children,
 }) => {
   const cls = clsx(
     styles.paragraph,
@@ -22,5 +22,5 @@ export const Paragraph: FC<ParagraphProps> = ({
     { [className ?? ""]: className },
   );
 
-  return <p className={cls}>{title}</p>;
+  return <p className={cls}>{children}</p>;
 };

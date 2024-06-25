@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { type FC, useCallback, useEffect } from "react";
 import {
   Outlet,
   useLocation,
@@ -16,13 +16,17 @@ export const Redirect: FC<RedirectProps> = ({ from, to, options = {} }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const navigateFromBadToTarget = useCallback(() => {
     if (location.pathname !== from) {
       return;
     }
 
     navigate(to, options);
-  }, [location]);
+  }, [from, location.pathname, navigate, options, to]);
+
+  useEffect(() => {
+    navigateFromBadToTarget();
+  }, [location, navigateFromBadToTarget]);
 
   return <Outlet />;
 };

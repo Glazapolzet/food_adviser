@@ -27,11 +27,9 @@ export const RecipeCardGrid: FC<RecipeCardGridProps> = ({ items }) => {
         <RecipeCard
           content={item}
           buttonComponent={
-            <Button
-              title={"view recipe"}
-              theme={"light"}
-              onClick={handleClick}
-            />
+            <Button theme={"light"} onClick={handleClick}>
+              view recipe
+            </Button>
           }
         />
       </li>

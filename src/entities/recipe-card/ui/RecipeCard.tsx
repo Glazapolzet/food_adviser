@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { type FC, ReactNode } from "react";
 import styles from "./RecipeCard.module.scss";
 import { Headline, Paragraph } from "shared/ui";
 import { RecipeCardInfo } from "./RecipeCardInfo/RecipeCardInfo";
@@ -27,18 +27,12 @@ export const RecipeCard: FC<RecipeCardProps> = ({
       />
       <div className={styles.content}>
         <div className={styles.textContainer}>
-          <Headline
-            title={content.title}
-            type={"3"}
-            theme={"light"}
-            className={styles.headline}
-          />
-          <Paragraph
-            title={content.description}
-            type={"2"}
-            theme={"light"}
-            className={styles.paragraph}
-          />
+          <Headline type={"3"} theme={"light"} className={styles.headline}>
+            {content.title}
+          </Headline>
+          <Paragraph type={"2"} theme={"light"} className={styles.paragraph}>
+            {content.description}
+          </Paragraph>
         </div>
         <div className={styles.infoContainer}>
           <RecipeCardInfo content={{ timeToCook, difficulty, servings }} />

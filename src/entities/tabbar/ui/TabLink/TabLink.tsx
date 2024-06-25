@@ -1,14 +1,14 @@
 import { clsx } from "clsx";
 import styles from "./TabLink.module.scss";
 import { NavLink, type NavLinkProps } from "react-router-dom";
-import { FC } from "react";
+import { type FC, type ReactNode } from "react";
 
 interface TabLinkProps extends Omit<NavLinkProps, "to"> {
   link: string;
-  title: string;
+  children: ReactNode;
 }
 
-export const TabLink: FC<TabLinkProps> = ({ link, title }) => {
+export const TabLink: FC<TabLinkProps> = ({ link, children, ...props }) => {
   return (
     <NavLink
       to={link}
@@ -17,8 +17,9 @@ export const TabLink: FC<TabLinkProps> = ({ link, title }) => {
           [styles.tablink_active]: isActive,
         })
       }
+      {...props}
     >
-      {title}
+      {children}
     </NavLink>
   );
 };

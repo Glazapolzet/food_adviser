@@ -1,4 +1,4 @@
-import { FC, lazy } from "react";
+import { type FC, lazy } from "react";
 import {
   createBrowserRouter,
   RouterProvider,

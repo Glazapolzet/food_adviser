@@ -1,0 +1,27 @@
+@mixin tabbar {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  column-gap: 16px;
+  justify-content: center;
+}
+
+@mixin item {}
+
+.tabbar {
+  @include tabbar;
+}
+
+.item {
+  @include item;
+}
+
+.tabSkeleton {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  opacity: var(--inactive-element-opacity);
+}

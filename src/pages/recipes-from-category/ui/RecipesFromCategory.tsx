@@ -1,10 +1,21 @@
-import { FC } from "react";
-import { useLoaderData } from "react-router-dom";
-import { RecipeCardGrid } from "widgets/recipe-card-grid";
+import { type FC, Suspense } from "react";
+import { useLoaderData, Await } from "react-router-dom";
+import {
+  RecipeCardGrid,
+  RecipeCardGridSkeleton,
+} from "widgets/recipe-card-grid";
 import { TRecipe } from "shared/api/recipes";
 
 export const RecipesFromCategory: FC = () => {
-  const data: Array<TRecipe> = useLoaderData() as Array<TRecipe>;
+  const data: { recipes: Promise<Array<TRecipe>> } = useLoaderData();
 
-  return <RecipeCardGrid items={data} />;
+  return (
+    <Suspense fallback={<RecipeCardGridSkeleton count={1} />}>
+      <Await resolve={data.recipes}>
+        {(recipes: Awaited<Array<TRecipe>>) => {
+          return <RecipeCardGrid items={recipes} />;
+        }}
+      </Await>
+    </Suspense>
+  );
 };

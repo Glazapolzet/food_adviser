@@ -7,4 +7,8 @@ export interface TRecipe {
   readonly difficulty: string;
   readonly servings: number;
   readonly category: string;
+  readonly ingredients: string[];
+  readonly nutrients: {
+    [index: string]: string;
+  };
 }

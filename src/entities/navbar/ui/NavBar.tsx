@@ -13,10 +13,12 @@ interface NavBarProps {
   theme: "light" | "dark";
 }
 
-export const NavBar: FC<NavBarProps> = ({ items, theme }) => {
+export const NavBar: FC<NavBarProps> = ({ items, theme, ...props }) => {
   const navigationItems = items.map((item) => (
     <li key={item.title} className={styles.item}>
-      <NavigationLink link={item.link} title={item.title} theme={theme} />
+      <NavigationLink link={item.link} theme={theme} {...props}>
+        {item.title}
+      </NavigationLink>
     </li>
   ));
 

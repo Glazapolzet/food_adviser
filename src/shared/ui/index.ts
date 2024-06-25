@@ -3,3 +3,5 @@ export { IconLink } from "./IconLink/IconLink";
 export { Paragraph } from "./Paragraph/Paragraph";
 export { Tag } from "./Tag/Tag";
 export { Headline } from "./Headline/Headline";
+export { SpinnerRoundOutlined } from "./SpinnerRoundOutlined/SpinnerRoundOutlined";
+export { SpinnerCircular } from "./SpinnerCircular/SpinnerCircular";

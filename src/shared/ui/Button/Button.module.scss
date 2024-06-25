@@ -9,12 +9,12 @@
   opacity: var(--active-element-opacity);
   text-transform: uppercase;
   cursor: pointer;
-  will-change: background-color, color, opacity;
-  transition: background-color var(--hover-transition), color var(--hover-transition), opacity var(--hover-transition);
 
   &_theme_light {
     background-color: var(--light-button-bg);
     color: var(--light-button-text);
+    will-change: background-color, color;
+    transition: background-color var(--hover-transition), color var(--hover-transition);
 
     &:hover {
       background-color: var(--dark-button-bg);
@@ -25,9 +25,13 @@
   &_theme_dark {
     background-color: var(--dark-button-bg);
     color: var(--dark-button-text);
+    will-change: background-color;
+    transition: background-color var(--hover-transition);
+    border: 1px solid var(--dark-button-bg);
 
     &:hover {
-      opacity: .6;
+      background-color: var(--primary-color-1);
+      color: var(--dark-color-2)
     }
   }
 }

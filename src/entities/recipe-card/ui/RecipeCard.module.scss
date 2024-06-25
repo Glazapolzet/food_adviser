@@ -1,24 +1,15 @@
+@use 'Skeleton/RecipeCardSkeleton.module.scss' as skeleton;
+
 .card {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--card-bg-color);
-  border: 1px solid var(--card-border-color);
-  border-radius: 24px;
-  overflow: hidden;
+  @include skeleton.card
 }
 
 .content {
-  min-height: 217px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px 24px 16px;
+  @include skeleton.content;
 }
 
 .textContainer {
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
+  @include skeleton.textContainer;
 }
 
 .headline {
@@ -30,7 +21,5 @@
 }
 
 .infoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include skeleton.infoContainer;
 }

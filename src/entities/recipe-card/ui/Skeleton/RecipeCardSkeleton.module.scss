@@ -1,0 +1,56 @@
+@mixin card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+@mixin content {
+  min-height: 217px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 24px 16px;
+}
+
+@mixin textContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+@mixin infoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card {
+  @include card;
+}
+
+.content {
+  @include content;
+}
+
+.textContainer {
+  @include textContainer;
+}
+
+.infoContainer {
+  @include infoContainer;
+}
+
+.imageSkeleton, .headlineSkeleton, .paragraphSkeleton, .infoSkeleton {
+  flex: 1;
+}
+
+.imageSkeleton {
+  display: flex;
+}
+
+.infoSkeleton {
+  height: 38px;
+}

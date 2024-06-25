@@ -1,29 +1,17 @@
 import styles from "./Categories.module.scss";
 import { Preface } from "entities/preface";
-import { TabBar } from "entities/tabbar";
-import { Outlet, useLoaderData, generatePath } from "react-router-dom";
-import { FC } from "react";
+import { TabBar, TabBarSkeleton } from "entities/tabbar";
+import { Outlet, useLoaderData, generatePath, Await } from "react-router-dom";
+import { type FC, Suspense } from "react";
 import { TCategory } from "shared/api/categories";
 import { PATH_CONFIG } from "shared/config";
 
 export const Categories: FC = () => {
-  const categories: Array<TCategory> = useLoaderData() as Array<TCategory>;
-
-  const tabBarLinks = categories.map((category) => {
-    return {
-      link: generatePath(
-        PATH_CONFIG.root.recipes.categories.category.fullPath,
-        {
-          categoryName: category.name,
-        },
-      ),
-      title: category.name,
-    };
-  });
+  const data: { categories: Promise<Array<TCategory>> } = useLoaderData();
 
   const prefaceData = {
     tagName: "Recipes",
-    title: "Самое время пожрать",
+    title: "Fabulous Title",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   };
 
@@ -35,8 +23,27 @@ export const Categories: FC = () => {
         size={"m"}
         align={"center"}
       />
+
       <div className={styles.tabbarContainer}>
-        <TabBar items={tabBarLinks} />
+        <Suspense fallback={<TabBarSkeleton count={5} />}>
+          <Await resolve={data.categories}>
+            {(categories: Array<TCategory>) => {
+              const tabBarLinks = categories.map((category) => {
+                return {
+                  link: generatePath(
+                    PATH_CONFIG.root.recipes.categories.category.fullPath,
+                    {
+                      categoryName: category.name,
+                    },
+                  ),
+                  title: category.name,
+                };
+              });
+
+              return <TabBar items={tabBarLinks} />;
+            }}
+          </Await>
+        </Suspense>
       </div>
       <Outlet />
     </section>

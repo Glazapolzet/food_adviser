@@ -30,35 +30,33 @@ export const Preface: FC<PrefaceProps> = ({
   switch (size) {
     case "l":
       headlineComponent = (
-        <Headline title={content.title} type={"1"} theme={theme} />
+        <Headline type={"1"} theme={theme}>
+          {content.title}
+        </Headline>
       );
       paragraphComponent = (
-        <Paragraph
-          title={content.description}
-          type={"1"}
-          theme={theme}
-          className={paragraphCls}
-        />
+        <Paragraph type={"1"} theme={theme} className={paragraphCls}>
+          {content.description}
+        </Paragraph>
       );
       break;
     case "m":
       headlineComponent = (
-        <Headline title={content.title} type={"2"} theme={theme} />
+        <Headline type={"2"} theme={theme}>
+          {content.title}
+        </Headline>
       );
       paragraphComponent = (
-        <Paragraph
-          title={content.description}
-          type={"2"}
-          theme={theme}
-          className={paragraphCls}
-        />
+        <Paragraph type={"2"} theme={theme} className={paragraphCls}>
+          {content.description}
+        </Paragraph>
       );
       break;
   }
 
   return (
     <div className={clsx(styles.preface, styles[`preface_align_${align}`])}>
-      <Tag title={content.tagName} size={size} />
+      <Tag size={size}>{content.tagName}</Tag>
       <div className={styles.headlineContainer}>{headlineComponent}</div>
       <div className={styles.paragraphContainer}>{paragraphComponent}</div>
     </div>
