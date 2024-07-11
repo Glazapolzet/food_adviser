@@ -55,6 +55,10 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
       setFiles((files) => files.filter((file) => file !== fileToRemove));
     };
 
+    const bytesToMB = (bytes: number) => {
+      return (bytes * Math.pow(10, -6)).toFixed(2);
+    };
+
     return (
       <div className={styles.wrapper}>
         {label && <Label htmlFor={id}>{label}</Label>}
@@ -95,7 +99,7 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
                       alt={"cover preview"}
                     />
                     <Paragraph type={"3"} theme={"light"}>
-                      {file.name} {(file.size * Math.pow(10, -6)).toFixed(2)}MB
+                      {file.name} {bytesToMB(file.size)}MB
                     </Paragraph>
                   </div>
                   <button
