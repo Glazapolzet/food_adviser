@@ -1,0 +1,409 @@
+openapi: 3.0.3
+info:
+  title: Food Adviser API
+  description: |-
+    API for foods, goods and poods.
+
+    __Useful links:__
+    - [GitHub Repo](https://github.com/Glazapolzet/food_adviser)
+  contact:
+    email: VypZlol@yandex.ru
+  version: 1.0.0
+servers:
+  - url: http://example.api/v1
+tags:
+  - name: recipes
+    description: Everything related to recipes
+  - name: user
+    description: User info and auth (coming soon)
+paths:
+  /recipes:
+    get:
+      tags:
+        - recipes
+      summary: Get all recipes
+      description: Get all recipes stored in database
+      operationId: getRecipes
+      parameters:
+        - name: categoryName
+          in: query
+          description: Name of category from which you want to get recipes
+          allowEmptyValue: true
+          schema:
+            type: string
+            example: lunch
+        - name: categoryId
+          in: query
+          description: Id of category from which you want to get recipes
+          allowEmptyValue: true
+          schema:
+            type: string
+            format: uuid
+            example: a7749453-69b5-4b42-8a29-115631b46c5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipes'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Recipes'
+        '400':
+          description: Not allowed query parameter
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - recipes
+      summary: Create recipe
+      description: Create new recipe
+      operationId: createRecipe
+      requestBody:
+        description: Recipe object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal Server Error
+  /recipes/{recipeId}:
+    parameters:
+      - name: recipeId
+        in: path
+        description: Id of the recipe
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: a7749453-69b5-4b42-8a29-115631b46c5e
+    get:
+      tags:
+        - recipes
+      summary: Get recipe
+      description: Get recipe by id
+      operationId: getRecipe
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Invalid recipe id supplied
+        '404':
+          description: Recipe not found
+        '500':
+          description: Internal Server Error
+    put:
+      tags:
+        - recipes
+      summary: Update recipe
+      description: Update recipe by id
+      operationId: updateRecipe
+      requestBody:
+        description: Updated recipe object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Invalid recipe id supplied
+        '404':
+          description: Recipe not found
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+        - recipes
+      summary: Delete recipe
+      description: Delete recipe by id
+      operationId: deleteRecipe
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Invalid recipe id supplied
+        '404':
+          description: Recipe not found
+        '500':
+          description: Internal Server Error
+  /recipes/categories:
+    get:
+      tags:
+        - recipes
+      summary: Get all categories
+      description: Get all categories
+      operationId: getCategories
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categories'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Categories'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - recipes
+      summary: Create category
+      description: Create new category
+      operationId: createCategory
+      requestBody:
+        description: Category object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal Server Error
+  /recipes/categories/{categoryId}:
+    parameters:
+      - name: categoryId
+        in: path
+        description: Id of the category
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: 90983a0a-2feb-4427-a04f-a8bff5478b27
+    put:
+      tags:
+        - recipes
+      summary: Update category
+      description: Update category by id
+      operationId: updateCategory
+      requestBody:
+        description: Updated category object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '400':
+          description: Invalid category id supplied
+        '404':
+          description: Category not found
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+        - recipes
+      summary: Delete category
+      description: Delete category by id
+      operationId: deleteCategory
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Invalid category id supplied
+        '404':
+          description: Category not found
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID v4
+          format: uuid
+          example: a7749453-69b5-4b42-8a29-115631b46c5e
+        cover:
+          type: object
+          format: byte
+          properties: {}
+        title:
+          type: string
+          example: Khachapuri adjarian open pie with mozzarella egg
+        description:
+          type: string
+          example: In non eos et tenetur sint at corporis.
+        timeToCook:
+          type: integer
+          description: Cooking time in minutes
+          minimum: 1
+          example: 60
+        difficulty:
+          type: string
+          description: Cooking difficulty
+          example: easy
+          enum:
+            - easy
+            - medium
+            - hard
+        servings:
+          type: integer
+          description: Servings per dish
+          minimum: 1
+          example: 3
+        category:
+          $ref: '#/components/schemas/Category'
+        ingredients:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+        nutrients:
+          $ref: '#/components/schemas/Nutrients'
+        guideline:
+          type: string
+          description: Cooking guide (represented as markdown file)
+          format: bytes
+      required:
+        - id
+        - cover
+        - title
+        - description
+        - timeToCook
+        - difficulty
+        - servings
+        - category
+        - ingredients
+        - nutrients
+        - guideline
+    Recipes:
+      type: object
+      properties:
+        recipes:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Recipe'
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID v4
+          format: uuid
+          example: 90983a0a-2feb-4427-a04f-a8bff5478b27
+        name:
+          type: string
+          example: lunch
+      required:
+        - id
+        - name
+    Categories:
+      type: object
+      properties:
+        categories:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Category'
+    Nutrients:
+      type: object
+      properties:
+        proteins:
+          type: number
+          description: Ammount of proteins in g.
+          format: float
+          minimum: 0
+          example: 13
+        fats:
+          type: number
+          description: Ammount of fats in g.
+          format: float
+          minimum: 0
+          example: 3.4
+        carbohydrates:
+          type: number
+          description: Ammount of carbohydrates in g.
+          format: float
+          minimum: 0
+          example: 72.2
+        fiber:
+          type: number
+          description: Ammount of fiber in g.
+          format: float
+          minimum: 0
+          example: 10
+        kcal:
+          type: integer
+          description: Ammount of kcalories per 100g.
+          format: float
+          minimum: 0
+          example: 307
+    ApiErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: integer
+                format: int32
+              message:
+                type: string

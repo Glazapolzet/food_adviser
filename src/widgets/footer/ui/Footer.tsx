@@ -21,7 +21,12 @@ export const Footer = () => {
         <ul className={styles.mediaContainer}>
           {mediaLinks.map((media) => (
             <li key={media.link} className={styles.mediaItem}>
-              <IconLink icon={media.icon} link={media.link} target={"_blank"} />
+              <IconLink
+                icon={media.icon}
+                link={media.link}
+                className={styles.mediaIcon}
+                target={"_blank"}
+              />
             </li>
           ))}
         </ul>

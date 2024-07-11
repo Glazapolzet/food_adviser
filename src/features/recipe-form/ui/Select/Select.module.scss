@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  width: 12.5rem;
+  font-family: var(--primary-ff);
+  font-weight: var(--fw-light);
+  font-size: 0.95rem;
+  line-height: 1;
+  margin: 0 0 0 auto;
+  padding: 8px;
+  border: 1px solid var(--dim-border-color);
+  display: block;
+  background-color: var(--input-bg-color);;
+  color: var(--dark-color-2);
+  border-radius: 6px;
+  cursor: pointer;
+  will-change: background-color;
+  transition: background-color var(--hover-transition);
+
+  &:hover {
+    background-color: var(--light-color-4);
+  }
+}

@@ -1,20 +1,15 @@
 import { NavLink, type NavLinkProps } from "react-router-dom";
 import { clsx } from "clsx";
-import styles from "./NavigationLink.module.scss";
+import styles from "./NLink.module.scss";
 import { type FC, type ReactNode } from "react";
 
-interface NavigationLinkProps extends Omit<NavLinkProps, "to"> {
+interface NLinkProps extends Omit<NavLinkProps, "to"> {
   link: string;
   theme: "light" | "dark";
   children: ReactNode;
 }
 
-export const NavigationLink: FC<NavigationLinkProps> = ({
-  link,
-  theme,
-  children,
-  ...props
-}) => {
+export const NLink: FC<NLinkProps> = ({ link, theme, children, ...props }) => {
   return (
     <NavLink
       to={link}

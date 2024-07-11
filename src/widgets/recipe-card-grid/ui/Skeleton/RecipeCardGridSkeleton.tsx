@@ -9,11 +9,13 @@ interface RecipeCardGridSkeletonProps {
 export const RecipeCardGridSkeleton: FC<RecipeCardGridSkeletonProps> = ({
   count,
 }) => {
-  const items = new Array(count).fill(null);
+  const items = new Array(count).fill({ id: crypto.randomUUID() }) as Array<{
+    id: ReturnType<typeof crypto.randomUUID>;
+  }>;
 
-  const recipeCards = items.map((_, index) => {
+  const recipeCards = items.map((item) => {
     return (
-      <li key={index} className={styles.item}>
+      <li key={item.id} className={styles.item}>
         <RecipeCardSkeleton />
       </li>
     );

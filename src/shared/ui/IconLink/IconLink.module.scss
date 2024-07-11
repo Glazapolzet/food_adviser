@@ -5,10 +5,10 @@
 }
 
 .link:hover {
-  opacity: .6;
+  opacity: var(--hovered-element-opacity);
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  object-fit: contain;
+  object-position: center;
 }

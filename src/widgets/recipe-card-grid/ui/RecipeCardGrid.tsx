@@ -1,5 +1,5 @@
 import styles from "./RecipeCardGrid.module.scss";
-import { FC } from "react";
+import { type FC } from "react";
 import { Button } from "shared/ui";
 import { useNavigate, generatePath } from "react-router-dom";
 import { TRecipe } from "shared/api/recipes";
@@ -23,7 +23,7 @@ export const RecipeCardGrid: FC<RecipeCardGridProps> = ({ items }) => {
     };
 
     return (
-      <li key={item.title} className={styles.item}>
+      <li key={item.id} className={styles.item}>
         <RecipeCard
           content={item}
           buttonComponent={

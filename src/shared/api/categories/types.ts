@@ -1,6 +1,8 @@
-import { TRecipe } from "shared/api/recipes";
+export interface TCategories {
+  categories: Array<TCategory>;
+}
 
 export interface TCategory {
+  readonly id: string;
   readonly name: string;
-  readonly content: Array<TRecipe>;
 }

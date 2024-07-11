@@ -46,11 +46,11 @@
   }
 
   &_theme_dark {
-    color: var(--light-color-2);
+    color: var(--light-color-3);
     opacity: var(--active-element-opacity);
 
     &:hover {
-      opacity: .6;
+      opacity: var(--hovered-element-opacity);
     }
   }
 }

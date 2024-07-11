@@ -7,31 +7,36 @@ import {
 } from "react-router-dom";
 import { Layout } from "../layout/Layout";
 const Categories = lazy(() => import("pages/categories"));
+const CategoryRecipes = lazy(() => import("pages/category-recipes"));
 const Recipe = lazy(() => import("pages/recipe"));
 const Redirect = lazy(() =>
   import("features/redirect").then(({ Redirect }) => ({
     default: Redirect,
   })),
 );
-const RecipesFromCategory = lazy(() => import("pages/recipes-from-category"));
 import { categoriesLoader } from "pages/categories";
+import { categoryRecipesLoader } from "pages/category-recipes";
 import { recipeLoader } from "pages/recipe";
-import { recipesFromCategoryLoader } from "pages/recipes-from-category";
 import { PATH_CONFIG } from "shared/config";
+import CreateRecipe, { createRecipeLoader } from "pages/create-recipe";
 
 const routes: RouteObject = {
-  id: "root",
+  id: PATH_CONFIG.root.id,
   path: PATH_CONFIG.root.path,
   element: <Layout />,
   errorElement: <div>Page 404</div>,
   children: [
     {
-      id: "home",
+      id: PATH_CONFIG.root.home.id,
       path: PATH_CONFIG.root.home.path,
-      element: <div>home</div>,
+      element: (
+        <div>
+          <b>Coming soon!</b>
+        </div>
+      ),
     },
     {
-      id: "recipes",
+      id: PATH_CONFIG.root.recipes.id,
       path: PATH_CONFIG.root.recipes.path,
       element: (
         <Redirect
@@ -47,21 +52,27 @@ const routes: RouteObject = {
       ),
       children: [
         {
-          id: "categories",
+          id: PATH_CONFIG.root.recipes.categories.id,
           path: PATH_CONFIG.root.recipes.categories.path,
           element: <Categories />,
           loader: categoriesLoader,
           children: [
             {
-              id: "category",
+              id: PATH_CONFIG.root.recipes.categories.category.id,
               path: PATH_CONFIG.root.recipes.categories.category.path,
-              element: <RecipesFromCategory />,
-              loader: recipesFromCategoryLoader,
+              element: <CategoryRecipes />,
+              loader: categoryRecipesLoader,
             },
           ],
         },
         {
-          id: "recipe",
+          id: PATH_CONFIG.root.recipes.new.id,
+          path: PATH_CONFIG.root.recipes.new.path,
+          element: <CreateRecipe />,
+          loader: createRecipeLoader,
+        },
+        {
+          id: PATH_CONFIG.root.recipes.recipe.id,
           path: PATH_CONFIG.root.recipes.recipe.path,
           element: <Recipe />,
           loader: recipeLoader,
@@ -69,9 +80,9 @@ const routes: RouteObject = {
       ],
     },
     {
-      id: "stats",
+      id: PATH_CONFIG.root.stats.id,
       path: PATH_CONFIG.root.stats.path,
-      element: <div>stats</div>,
+      element: <div>Coming soon!</div>,
     },
   ],
 };

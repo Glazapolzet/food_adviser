@@ -1,15 +1,15 @@
-import { type FC, ReactNode } from "react";
+import { type FC, type JSX } from "react";
 import styles from "./RecipeCard.module.scss";
 import { Headline, Paragraph } from "shared/ui";
-import { RecipeCardInfo } from "./RecipeCardInfo/RecipeCardInfo";
+import { Info } from "./Info/Info";
 import { TRecipe } from "shared/api/recipes";
-import { RecipeCardImage } from "./RecipeCardImage/RecipeCardImage";
+import { Cover } from "./Cover/Cover";
 
-//TODO: убрать ReactNode и сделать более жесткую проверку на тип кнопки
+//TODO: remove ReactNode/JSX.Element and make more strict type check on buttonComponent
 
 interface RecipeCardProps {
   content: TRecipe;
-  buttonComponent: ReactNode;
+  buttonComponent: JSX.Element;
 }
 
 export const RecipeCard: FC<RecipeCardProps> = ({
@@ -20,11 +20,7 @@ export const RecipeCard: FC<RecipeCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <RecipeCardImage
-        src={content.cover}
-        alt={content.title}
-        loading={"lazy"}
-      />
+      <Cover src={content.cover} alt={content.title} loading={"lazy"} />
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <Headline type={"3"} theme={"light"} className={styles.headline}>
@@ -35,7 +31,7 @@ export const RecipeCard: FC<RecipeCardProps> = ({
           </Paragraph>
         </div>
         <div className={styles.infoContainer}>
-          <RecipeCardInfo content={{ timeToCook, difficulty, servings }} />
+          <Info content={{ timeToCook, difficulty, servings }} />
           {buttonComponent}
         </div>
       </div>

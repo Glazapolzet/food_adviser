@@ -1,6 +1,5 @@
 @mixin cardGrid {
   padding: 0;
-  margin: 40px 0 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

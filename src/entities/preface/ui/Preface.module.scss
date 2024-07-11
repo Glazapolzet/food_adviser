@@ -4,25 +4,35 @@
 
   &_align_left {
     align-items: start;
+
+    & .paragraph {
+      text-align: start;
+    }
   }
 
   &_align_center {
     align-items: center;
+
+    & .paragraph {
+      text-align: center;
+    }
   }
 
   &_align_right {
     align-items: end;
+
+    & .paragraph {
+      text-align: right;
+    }
   }
 }
 
 .headlineContainer {
   margin: 8px 0 0;
-  text-align: center;
 }
 
 .paragraphContainer {
-  margin: 12px 0 0;
-  text-align: center;
+  margin: 10px 0 0;
 }
 
 .paragraph::first-letter {

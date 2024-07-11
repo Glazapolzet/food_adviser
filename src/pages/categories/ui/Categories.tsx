@@ -11,7 +11,7 @@ export const Categories: FC = () => {
 
   const prefaceData = {
     tagName: "Recipes",
-    title: "Fabulous Title",
+    title: "Recipes",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   };
 

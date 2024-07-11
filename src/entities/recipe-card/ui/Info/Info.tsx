@@ -1,7 +1,7 @@
 import { FC } from "react";
-import styles from "./RecipeCardInfo.module.scss";
+import styles from "./Info.module.scss";
 
-interface RecipeCardInfoProps {
+interface InfoProps {
   content: {
     timeToCook: number;
     difficulty: string;
@@ -9,7 +9,7 @@ interface RecipeCardInfoProps {
   };
 }
 
-export const RecipeCardInfo: FC<RecipeCardInfoProps> = ({ content }) => {
+export const Info: FC<InfoProps> = ({ content }) => {
   return (
     <div className={styles.info}>
       <p className={styles.text}>

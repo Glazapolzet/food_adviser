@@ -9,6 +9,7 @@ export interface TRecipe {
   readonly category: string;
   readonly ingredients: string[];
   readonly nutrients: {
-    [index: string]: string;
+    [index: string]: number;
   };
+  readonly guideline: File;
 }

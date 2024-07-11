@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 import { SpinnerProps } from "./types";
-import { SPINNER_DEFAULTS } from "shared/lib/spinners/defaults";
+import { SPINNER_DEFAULTS } from "./defaults";
 
 const normalizeSize = (size: string | number) =>
   parseFloat(size.toString()).toString() === size.toString()

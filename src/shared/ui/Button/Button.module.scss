@@ -9,6 +9,8 @@
   opacity: var(--active-element-opacity);
   text-transform: uppercase;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
 
   &_theme_light {
     background-color: var(--light-button-bg);

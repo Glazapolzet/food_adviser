@@ -35,6 +35,11 @@ export const PATH_CONFIG = {
           fullPath: "/recipes/categories/:categoryName",
         },
       },
+      new: {
+        id: "new",
+        path: "new",
+        fullPath: "/recipes/new",
+      },
       recipe: {
         id: "recipe",
         path: ":recipeId",

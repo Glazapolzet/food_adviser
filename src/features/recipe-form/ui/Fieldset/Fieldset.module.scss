@@ -1,0 +1,25 @@
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  row-gap: 8px;
+  box-sizing: border-box;
+  padding: 8px 24px 16px;
+  background-color: var(--light-color-2);
+  border: 1px solid var(--dim-border-color);
+  border-radius: 18px;
+}
+
+.legend {
+  font-family: var(--primary-ff);
+  font-size: .875rem;
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  text-transform: uppercase;
+  background-color: var(--primary-color-3);
+  border-radius: 12px;
+  padding: 4px 8px;
+  color: var(--dark-button-text);
+}

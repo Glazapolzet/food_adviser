@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 12.5rem;
+  box-sizing: border-box;
+  font-family: var(--primary-ff);
+  font-weight: var(--fw-light);
+  font-size: 0.95rem;
+  line-height: 1;
+  margin: 0 0 0 auto;
+  padding: 8px;
+  border: 1px solid var(--dim-border-color);
+  display: block;
+  background-color: var(--input-bg-color);
+  color: var(--dark-color-2);
+  border-radius: 6px;
+  outline: none;
+  will-change: outline;
+  transition: outline .07s ease-in-out;
+
+  &:focus {
+    outline: 2px solid var(--primary-color-3);
+  }
+}
+
+//.input[type="number"] {
+//  width: fit-content;
+//}

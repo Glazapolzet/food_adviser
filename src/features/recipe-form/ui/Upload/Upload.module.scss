@@ -1,0 +1,106 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.uploadContainer {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 70%;
+  max-width: 17rem;
+}
+
+.uploadButton {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  min-width: 100%;
+  max-width: 100%;
+  align-items: center;
+  background-color: var(--input-bg-color);
+  border-radius: 6px;
+  border: 1px dashed (var(--border-color));
+  cursor: pointer;
+  will-change: background-color;
+  transition: background-color var(--hover-transition);
+
+  &:hover {
+    background-color: var(--light-color-4);
+  }
+}
+
+.uploadIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.previewList {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 15px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.previewItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.previewContainer {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  border-radius: 6px;
+  background-color: var(--light-color-1);
+  border: 1px solid var(--dim-border-color);
+}
+
+.previewImage {
+  min-width: 50px;
+  max-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+}
+
+.trashButton {
+  align-self: stretch;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: var(--light-color-1);
+  border: 1px solid var(--dim-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  will-change: background-color;
+  transition: background-color var(--hover-transition);
+
+  &:hover {
+    background-color: var(--light-color-4);
+  }
+}
+
+.trashIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  object-position: center;
+}

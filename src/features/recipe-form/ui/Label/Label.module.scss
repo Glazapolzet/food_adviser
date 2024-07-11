@@ -1,0 +1,11 @@
+.label {
+  display: flex;
+}
+
+.labelText {
+  margin: 0;
+  font-family: var(--primary-ff);
+  font-size: 1.0rem;
+  font-weight: var(--fw-light);
+  line-height: 1;
+}

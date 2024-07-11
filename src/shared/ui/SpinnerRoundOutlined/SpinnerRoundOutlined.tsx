@@ -5,6 +5,7 @@ import {
   withSharedProps,
 } from "shared/lib";
 import { SPINNER_DEFAULTS } from "shared/lib/spinners/defaults";
+import { type FC } from "react";
 
 const animations = [
   {
@@ -55,4 +56,4 @@ export const SpinnerRoundOutlined = withSharedProps(
       </svg>
     );
   },
-);
+) as FC<SpinnerRoundOutlinedProps>;

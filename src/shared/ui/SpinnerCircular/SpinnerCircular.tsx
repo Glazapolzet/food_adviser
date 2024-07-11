@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, FC } from "react";
 import {
   SpinnerProps,
   SecondaryColorSpinnerProps,
@@ -47,4 +47,4 @@ export const SpinnerCircular = withSharedProps(
       </svg>
     );
   },
-);
+) as FC<SpinnerCircularProps>;

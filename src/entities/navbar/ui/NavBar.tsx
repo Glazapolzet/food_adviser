@@ -1,6 +1,6 @@
 import styles from "./NavBar.module.scss";
 import { FC } from "react";
-import { NavigationLink } from "./NavigationLink/NavigationLink";
+import { NLink } from "./NLink/NLink";
 import { clsx } from "clsx";
 
 type NavBarItem = {
@@ -16,9 +16,9 @@ interface NavBarProps {
 export const NavBar: FC<NavBarProps> = ({ items, theme, ...props }) => {
   const navigationItems = items.map((item) => (
     <li key={item.title} className={styles.item}>
-      <NavigationLink link={item.link} theme={theme} {...props}>
+      <NLink link={item.link} theme={theme} {...props}>
         {item.title}
-      </NavigationLink>
+      </NLink>
     </li>
   ));
 

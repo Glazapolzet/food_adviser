@@ -1,0 +1,34 @@
+.form {
+  display: grid;
+  grid-template-areas:
+    "main info"
+    "nutrients ingredients"
+    "nutrients category"
+    "nutrients cover"
+    ". cover";
+  gap: 10px;
+}
+
+.fieldsetMain {
+  grid-area: main;
+}
+
+.fieldsetCover {
+  grid-area: cover;
+}
+
+.fieldsetIngredients {
+  grid-area: ingredients;
+}
+
+.fieldsetCategory {
+  grid-area: category;
+}
+
+.fieldsetNutrients {
+  grid-area: nutrients;
+}
+
+.fieldsetInfo {
+  grid-area: info;
+}

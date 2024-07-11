@@ -38,7 +38,7 @@
 .logoTitle {
   margin: 0;
   text-transform: capitalize;
-  color: var(--light-color-2);
+  color: var(--light-color-3);
   font-family: var(--primary-ff);
   font-size: 0.875rem;
   font-weight: var(--fw-regular);
@@ -60,6 +60,11 @@
 
 .mediaItem {}
 
+.mediaIcon {
+  width: 20px;
+  height: 20px;
+}
+
 .copyrightContainer {
   margin: 15px 0 24px;
   display: flex;
@@ -67,7 +72,7 @@
 }
 
 .copyright {
-  color: var(--light-color-2);
+  color: var(--light-color-3);
   opacity: .6;
   font-family: var(--primary-ff);
   font-size: 0.75rem;
