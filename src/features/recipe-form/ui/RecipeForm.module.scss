@@ -2,9 +2,9 @@
   display: grid;
   grid-template-areas:
     "main info"
+    "nutrients info"
     "nutrients ingredients"
     "nutrients category"
-    "nutrients cover"
     ". cover";
   gap: 10px;
 }

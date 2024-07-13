@@ -1,7 +1,9 @@
 export { Button } from "./Button/Button";
+export { Fieldset } from "./Fieldset/Fieldset";
 export { IconLink } from "./IconLink/IconLink";
 export { Paragraph } from "./Paragraph/Paragraph";
 export { Tag } from "./Tag/Tag";
+export { Label } from "./Label/Label";
 export { Headline } from "./Headline/Headline";
 export { SpinnerRoundOutlined } from "./SpinnerRoundOutlined/SpinnerRoundOutlined";
 export { SpinnerCircular } from "./SpinnerCircular/SpinnerCircular";

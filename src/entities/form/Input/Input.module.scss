@@ -1,10 +1,11 @@
 .wrapper {
   display: flex;
   align-items: center;
+  column-gap: 10px;
 }
 
 .input {
-  width: 12.5rem;
+  width: var(--inputs-width);
   box-sizing: border-box;
   font-family: var(--primary-ff);
   font-weight: var(--fw-light);
@@ -25,7 +26,3 @@
     outline: 2px solid var(--primary-color-3);
   }
 }
-
-//.input[type="number"] {
-//  width: fit-content;
-//}

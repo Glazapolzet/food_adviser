@@ -9,3 +9,8 @@
   font-weight: var(--fw-light);
   line-height: 1;
 }
+
+.required .label::after {
+  content: "*";
+  color: #EE6352;
+}

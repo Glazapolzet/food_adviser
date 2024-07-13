@@ -54,9 +54,3 @@ export const defaultInputsValues: FormInputs = {
   servings: NaN,
   category: "",
 };
-
-export const difficultyOptions: Array<{ name: string }> = [
-  { name: "easy" },
-  { name: "medium" },
-  { name: "hard" },
-];

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { forwardRef } from "react";
 import { clsx } from "clsx";
 import styles from "./Fieldset.module.scss";

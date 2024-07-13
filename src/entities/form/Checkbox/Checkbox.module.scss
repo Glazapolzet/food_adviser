@@ -1,0 +1,55 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.checkbox {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  position: relative;
+  box-sizing: border-box;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--dim-border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--hover-transition), border var(--hover-transition);
+
+  &:hover {
+    background-color: var(--primary-color-1);
+    border: 1px solid var(--border-color);
+  }
+}
+
+:has(> .hiddenCheckbox:checked) {
+  background-color: var(--primary-color-1);
+  border: 1px solid var(--border-color);
+}
+
+.hiddenCheckbox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.tickIcon {
+  width: 70%;
+  height: 70%;
+  visibility: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  .hiddenCheckbox:checked + & {
+    visibility: visible;
+  }
+}
+
+

@@ -1,13 +1,9 @@
-import {
-  type ComponentPropsWithoutRef,
-  type FC,
-  forwardRef,
-  useId,
-} from "react";
+import { type ComponentPropsWithoutRef, forwardRef, useId } from "react";
 import styles from "./Input.module.scss";
-import { Label } from "../Label/Label";
+import { Label } from "shared/ui";
 
-interface InputProps extends ComponentPropsWithoutRef<"input"> {
+interface InputProps
+  extends Omit<ComponentPropsWithoutRef<"input">, "className"> {
   label?: string;
 }
 

@@ -1,57 +1,69 @@
 import {
   type ChangeEvent,
   type ComponentPropsWithoutRef,
-  type FC,
   forwardRef,
   useId,
   useRef,
   useState,
 } from "react";
-import { Headline, Paragraph } from "shared/ui";
+import { Headline, Paragraph, Label } from "shared/ui";
+import { useShareRefs } from "shared/lib";
 import styles from "./Upload.module.scss";
 import uploadIcon from "assets/icons/ic_round-cloud-upload.svg";
-import { useShareRefs } from "shared/lib";
-import { Label } from "../Label/Label";
 import trashIcon from "assets/icons/clarity_trash-solid.svg";
 
-interface UploadProps extends Omit<ComponentPropsWithoutRef<"input">, "type"> {
+interface UploadProps
+  extends Omit<ComponentPropsWithoutRef<"input">, "type" | "className"> {
   label?: string;
 }
 
 export const Upload = forwardRef<HTMLInputElement, UploadProps>(
-  ({ label, onChange, ...props }, ref) => {
+  ({ label, onChange: onSideChange, multiple = false, ...props }, ref) => {
     const id = useId();
     const innerRef = useRef<HTMLInputElement | null>(null);
-    const shareRefs = useShareRefs([ref, innerRef]);
+    const refs = useShareRefs([ref, innerRef]);
 
     const [files, setFiles] = useState<Array<File>>([]);
 
-    const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (
+      evt: ChangeEvent<HTMLInputElement>,
+      onSideChange?: (event: ChangeEvent<HTMLInputElement>) => void,
+      onFilesChange?: (fileList: FileList) => void,
+    ) => {
       const fileList = evt.target.files;
 
-      const getUniqueValues = function (arr: Array<File>) {
-        return arr.reduce<Array<File>>((accum, currentValue) => {
-          return accum.some(
-            (item) => item.lastModified === currentValue.lastModified,
-          )
-            ? accum
-            : [...accum, currentValue];
-        }, []);
-      };
-
-      if (fileList?.length) {
-        setFiles((prevState) => [
-          ...getUniqueValues([...prevState, ...fileList]),
-        ]);
+      if (fileList?.length && onFilesChange) {
+        onFilesChange(fileList);
       }
 
-      if (onChange) {
-        onChange(evt);
+      if (onSideChange) {
+        onSideChange(evt);
       }
     };
 
+    const handleSingleChange = (evt: ChangeEvent<HTMLInputElement>) =>
+      handleChange(evt, onSideChange, (fileList) => {
+        setFiles([...fileList]);
+      });
+
+    const handleMultipleChange = (evt: ChangeEvent<HTMLInputElement>) =>
+      handleChange(evt, onSideChange, (fileList) => {
+        const getUniqueValues = function (arr: Array<File>) {
+          return arr.reduce<Array<File>>((accum, currentValue) => {
+            return accum.some(
+              (item) => item.lastModified === currentValue.lastModified,
+            )
+              ? accum
+              : [...accum, currentValue];
+          }, []);
+        };
+
+        setFiles((prevState) => [
+          ...getUniqueValues([...prevState, ...fileList]),
+        ]);
+      });
+
     const handleTrashClick = (fileToRemove: File) => {
-      console.log({ fileToRemove, files });
       setFiles((files) => files.filter((file) => file !== fileToRemove));
     };
 
@@ -70,10 +82,11 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
           >
             <input
               id={id}
+              multiple={multiple}
               type={"file"}
-              ref={shareRefs}
+              ref={refs}
               style={{ display: "none" }}
-              onChange={handleChange}
+              onChange={multiple ? handleMultipleChange : handleSingleChange}
               {...props}
             />
             <img
@@ -121,4 +134,4 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
       </div>
     );
   },
-) as FC<UploadProps>;
+);
