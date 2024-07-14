@@ -11,7 +11,7 @@ import { useShareRefs } from "shared/lib";
 import styles from "./Upload.module.scss";
 import uploadIcon from "assets/icons/ic_round-cloud-upload.svg";
 import trashIcon from "assets/icons/clarity_trash-solid.svg";
-import { bytesToMB, getUniqueValues } from "../lib/helpers";
+import { bytesToMB } from "../lib/helpers";
 
 interface UploadProps
   extends Omit<ComponentPropsWithoutRef<"input">, "type" | "className"> {
