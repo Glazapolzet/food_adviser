@@ -1,4 +1,4 @@
-export { CheckboxList } from "./CheckboxList/CheckboxList";
-export { Input } from "./Input/Input";
-export { Select } from "./Select/Select";
-export { Upload } from "./Upload/Upload";
+export { CheckboxList } from "./CheckboxList/ui/CheckboxList";
+export { Input } from "./Input/ui/Input";
+export { Select } from "./Select/ui/Select";
+export { Upload } from "./Upload/ui/Upload";

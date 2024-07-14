@@ -11,7 +11,7 @@ import { type FieldPath, type SubmitHandler, useForm } from "react-hook-form";
 import { defaultInputsValues } from "../config/inputs";
 import type { FormInputs } from "../types/types";
 import { Fieldset } from "shared/ui";
-import { Checkbox } from "entities/form/Checkbox/Checkbox";
+import { Checkbox } from "entities/form/Checkbox/ui/Checkbox";
 
 interface RecipeFormProps
   extends Pick<ComponentPropsWithoutRef<"form">, "id" | "name"> {
@@ -50,12 +50,14 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
       >
         <Fieldset legend={"main"} className={styles.fieldsetMain}>
           <Input
+            placeholder={"Type your text here..."}
             label={"Title"}
             {...register<FieldPath<FormInputs>>("title", {
               required: true,
             })}
           />
           <Input
+            placeholder={"Type your text here..."}
             label={"Description"}
             {...register<FieldPath<FormInputs>>("description")}
           />
@@ -66,6 +68,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
           className={styles.fieldsetInfo}
         >
           <Input
+            placeholder={"Time in minutes..."}
             type={"number"}
             min={0}
             label={"Time to cook"}
@@ -86,14 +89,8 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
               />
             ))}
           </CheckboxList>
-          {/*<Select*/}
-          {/*  label={"Difficulty"}*/}
-          {/*  options={difficultyOptions}*/}
-          {/*  {...register<FieldPath<FormInputs>>("difficulty", {*/}
-          {/*    required: true,*/}
-          {/*  })}*/}
-          {/*/>*/}
           <Input
+            placeholder={"Servings per portion..."}
             type={"number"}
             label={"Servings"}
             min={0}
@@ -101,15 +98,6 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
               required: true,
               setValueAs: (v: string) => parseInt(v),
             })}
-          />
-        </Fieldset>
-
-        <Fieldset legend={"cover"} className={styles.fieldsetCover}>
-          <Upload
-            label={"Cover"}
-            multiple={false}
-            accept={"image/png, image/jpeg"}
-            {...register<FieldPath<FormInputs>>("cover")}
           />
         </Fieldset>
 
@@ -130,11 +118,21 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
           />
         </Fieldset>
 
+        <Fieldset legend={"cover"} className={styles.fieldsetCover}>
+          <Upload
+            label={"Cover"}
+            multiple={true}
+            accept={"image/png, image/jpeg"}
+            {...register<FieldPath<FormInputs>>("cover")}
+          />
+        </Fieldset>
+
         <Fieldset
           legend={"nutritional values"}
           className={styles.fieldsetNutrients}
         >
           <Input
+            placeholder={"g. in 100g."}
             type={"number"}
             min={0}
             label={"Proteins"}
@@ -143,6 +141,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             })}
           />
           <Input
+            placeholder={"g. in 100g."}
             type={"number"}
             min={0}
             label={"Fats"}
@@ -151,6 +150,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             })}
           />
           <Input
+            placeholder={"g. in 100g."}
             type={"number"}
             min={0}
             label={"Carbohydrates"}
@@ -159,6 +159,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             })}
           />
           <Input
+            placeholder={"g. in 100g."}
             type={"number"}
             min={0}
             label={"Fiber"}
@@ -167,6 +168,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             })}
           />
           <Input
+            placeholder={"kcal in 100g."}
             type={"number"}
             min={0}
             label={"Kcal"}

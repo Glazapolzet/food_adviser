@@ -11,6 +11,7 @@ import { useShareRefs } from "shared/lib";
 import styles from "./Upload.module.scss";
 import uploadIcon from "assets/icons/ic_round-cloud-upload.svg";
 import trashIcon from "assets/icons/clarity_trash-solid.svg";
+import { bytesToMB, getUniqueValues } from "../lib/helpers";
 
 interface UploadProps
   extends Omit<ComponentPropsWithoutRef<"input">, "type" | "className"> {
@@ -23,7 +24,9 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
     const innerRef = useRef<HTMLInputElement | null>(null);
     const refs = useShareRefs([ref, innerRef]);
 
-    const [files, setFiles] = useState<Array<File>>([]);
+    const [files, setFiles] = useState<
+      Array<{ file: File; filePreview: string }>
+    >([]);
 
     const handleChange = (
       evt: ChangeEvent<HTMLInputElement>,
@@ -43,32 +46,37 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
 
     const handleSingleChange = (evt: ChangeEvent<HTMLInputElement>) =>
       handleChange(evt, onSideChange, (fileList) => {
-        setFiles([...fileList]);
+        const newFiles = [...fileList];
+
+        setFiles(
+          newFiles.map((file: File) => ({
+            file: file,
+            filePreview: URL.createObjectURL(file),
+          })),
+        );
       });
 
     const handleMultipleChange = (evt: ChangeEvent<HTMLInputElement>) =>
       handleChange(evt, onSideChange, (fileList) => {
-        const getUniqueValues = function (arr: Array<File>) {
-          return arr.reduce<Array<File>>((accum, currentValue) => {
-            return accum.some(
-              (item) => item.lastModified === currentValue.lastModified,
-            )
-              ? accum
-              : [...accum, currentValue];
-          }, []);
-        };
+        const newFiles = [...fileList].map((file: File) => ({
+          file: file,
+          filePreview: URL.createObjectURL(file),
+        }));
 
-        setFiles((prevState) => [
-          ...getUniqueValues([...prevState, ...fileList]),
-        ]);
+        setFiles((oldFiles) => [...oldFiles, ...newFiles]);
       });
 
-    const handleTrashClick = (fileToRemove: File) => {
-      setFiles((files) => files.filter((file) => file !== fileToRemove));
-    };
+    const handleFileRemove = (fileToRemove: File) => {
+      setFiles((files) =>
+        files.filter(({ file, filePreview }) => {
+          if (file === fileToRemove) {
+            URL.revokeObjectURL(filePreview);
+            return false;
+          }
 
-    const bytesToMB = (bytes: number) => {
-      return (bytes * Math.pow(10, -6)).toFixed(2);
+          return true;
+        }),
+      );
     };
 
     return (
@@ -103,31 +111,33 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
           </button>
           {files.length !== 0 && (
             <ul className={styles.previewList}>
-              {files.map((file) => (
-                <li key={file.lastModified} className={styles.previewItem}>
-                  <div className={styles.previewContainer}>
-                    <img
-                      className={styles.previewImage}
-                      src={URL.createObjectURL(file)}
-                      alt={"cover preview"}
-                    />
-                    <Paragraph type={"3"} theme={"light"}>
-                      {file.name} {bytesToMB(file.size)}MB
-                    </Paragraph>
-                  </div>
-                  <button
-                    onClick={() => handleTrashClick(file)}
-                    type={"button"}
-                    className={styles.trashButton}
-                  >
-                    <img
-                      className={styles.trashIcon}
-                      src={trashIcon}
-                      alt={"trash"}
-                    />
-                  </button>
-                </li>
-              ))}
+              {files.map(({ file, filePreview }) => {
+                return (
+                  <li key={filePreview} className={styles.previewItem}>
+                    <div className={styles.previewContainer}>
+                      <img
+                        className={styles.previewImage}
+                        src={filePreview}
+                        alt={"cover preview"}
+                      />
+                      <Paragraph type={"3"} theme={"light"}>
+                        {file.name} {bytesToMB(file.size)}MB
+                      </Paragraph>
+                    </div>
+                    <button
+                      onClick={() => handleFileRemove(file)}
+                      type={"button"}
+                      className={styles.trashButton}
+                    >
+                      <img
+                        className={styles.trashIcon}
+                        src={trashIcon}
+                        alt={"trash"}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
