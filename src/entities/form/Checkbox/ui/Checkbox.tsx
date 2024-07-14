@@ -16,8 +16,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const innerRef = useRef<HTMLInputElement | null>(null);
     const refs = useShareRefs([innerRef, ref]);
 
-    // console.log(props, value, label);
-
     return (
       <div className={styles.wrapper}>
         <button

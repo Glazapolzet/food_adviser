@@ -1,8 +1,8 @@
-export type FormInputs = {
+export type FormValues = {
   title: string;
   cover: File;
   description: string;
-  ingredients: string[];
+  ingredients: Array<{ name: string }>;
   nutrients: {
     proteins: number;
     fats: number;

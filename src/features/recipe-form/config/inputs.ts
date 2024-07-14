@@ -1,10 +1,10 @@
-import { type FormInputs } from "../types/types";
+import { type FormValues } from "../types/types";
 
-export const defaultInputsValues: FormInputs = {
+export const defaultFormValues: FormValues = {
   title: "",
   cover: new File([], ""),
   description: "",
-  ingredients: new Array<string>(0),
+  ingredients: [{ name: "" }],
   nutrients: {
     proteins: NaN,
     fats: NaN,
