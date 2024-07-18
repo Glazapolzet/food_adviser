@@ -36,7 +36,7 @@ export const CreateRecipe: FC = () => {
           </Suspense>
         </div>
         <div className={styles.buttonContainer}>
-          <Button theme={"light"} type={"submit"} form={"recipeForm"}>
+          <Button theme={"dark"} type={"submit"} form={"recipeForm"}>
             Create recipe
           </Button>
         </div>

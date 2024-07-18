@@ -11,7 +11,7 @@
   font-size: 0.95rem;
   line-height: 1;
   margin: 0 0 0 auto;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid var(--dim-border-color);
   display: block;
   background-color: var(--input-bg-color);;
@@ -24,4 +24,9 @@
   &:hover {
     background-color: var(--light-color-4);
   }
+}
+
+.error {
+  border: 1px solid var(--primary-color-3);
+  color: var(--primary-color-3);
 }

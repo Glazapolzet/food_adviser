@@ -9,8 +9,8 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  min-width: 16rem;
-  max-width: 16rem;
+  min-width: var(--inputs-width);
+  max-width: var(--inputs-width);
 }
 
 .uploadButton {

@@ -10,7 +10,8 @@
   line-height: 1;
 }
 
-.required .label::after {
+.required::after {
   content: "*";
+  margin: 0 0 0 0.1rem;
   color: #EE6352;
 }

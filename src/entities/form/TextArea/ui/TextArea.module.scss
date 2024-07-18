@@ -1,27 +1,21 @@
 .wrapper {
   display: flex;
-  align-items: center;
-  column-gap: 10px;
-}
-
-.inputContainer {
-  position: relative;
-  display: flex;
   flex-direction: column;
-  margin: 0 0 0 auto;
+  row-gap: 15px;
 }
 
-.input {
-  margin: var(--errors-size) 0;
-  width: var(--inputs-width);
+.textarea {
+  width: 100%;
+  height: auto;
+  min-height: 150px;
+  overflow: hidden;
+  resize: vertical;
   box-sizing: border-box;
   font-family: var(--primary-ff);
   font-weight: var(--fw-light);
   font-size: 0.95rem;
-  line-height: 1;
   padding: 10px;
   border: 1px solid var(--dim-border-color);
-  display: block;
   background-color: var(--input-bg-color);
   color: var(--dark-color-2);
   border-radius: 6px;
@@ -40,10 +34,4 @@
   &_error::placeholder {
     color: var(--primary-color-3);
   }
-}
-
-.error {
-  position: absolute;
-  top: -0.1rem;
-  right: 0.1rem;
 }

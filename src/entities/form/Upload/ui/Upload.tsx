@@ -19,7 +19,7 @@ interface UploadProps
 }
 
 export const Upload = forwardRef<HTMLInputElement, UploadProps>(
-  ({ label, onChange: onSideChange, multiple = false, ...props }, ref) => {
+  ({ label, onChange: onSideChange, multiple, required, ...props }, ref) => {
     const id = useId();
     const innerRef = useRef<HTMLInputElement | null>(null);
     const refs = useShareRefs([ref, innerRef]);
@@ -81,7 +81,11 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
 
     return (
       <div className={styles.wrapper}>
-        {label && <Label htmlFor={id}>{label}</Label>}
+        {label && (
+          <Label htmlFor={id} forRequiredField={required}>
+            {label}
+          </Label>
+        )}
         <div className={styles.uploadContainer}>
           <button
             type={"button"}

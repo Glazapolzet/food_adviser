@@ -1,3 +1,74 @@
-.addButton {}
+.wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
 
-.removeButton {}
+.inputList {
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.expandedInput {
+  display: grid;
+  grid-template-columns: 2rem 2rem auto;
+  grid-template-areas:
+  "remove add input";
+  align-items: center;
+  column-gap: 5px;
+}
+
+@mixin button {
+  width: 100%;
+  height: calc(100% - 2 * var(--errors-size));
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--dim-border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--hover-transition), border var(--hover-transition);
+
+  &:hover {
+    background-color: var(--primary-color-1);
+    border: 1px solid var(--border-color);
+  }
+}
+
+.addButton {
+  @include button;
+  grid-area: add;
+}
+
+.removeButton {
+  @include button;
+  grid-area: remove;
+}
+
+@mixin icon {
+  height: 0.8rem;
+  width: 0.8rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.plusIcon {
+  @include icon;
+}
+
+.minusIcon {
+  @include icon;
+}
+
+.input {
+  grid-area: input;
+  width: calc(var(--inputs-width) - 2rem - 5px);
+}

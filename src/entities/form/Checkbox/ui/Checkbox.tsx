@@ -1,17 +1,25 @@
-import { ComponentPropsWithoutRef, forwardRef, useId, useRef } from "react";
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  HTMLInputTypeAttribute,
+  useId,
+  useRef,
+} from "react";
 import { Label } from "shared/ui";
 import styles from "./Checkbox.module.scss";
 import { useShareRefs } from "shared/lib";
 import tickIcon from "assets/icons/tick.svg";
+import { clsx } from "clsx";
 
 interface CheckboxProps
-  extends Omit<ComponentPropsWithoutRef<"input">, "type" | "className"> {
+  extends Omit<ComponentPropsWithoutRef<"input">, "id" | "type" | "className"> {
+  error?: string;
   label?: string;
-  type?: "checkbox" | "radio";
+  type?: Extract<HTMLInputTypeAttribute, "checkbox" | "radio">;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, type = "checkbox", value, ...props }, ref) => {
+  ({ label, type = "checkbox", value, error, required, ...props }, ref) => {
     const id = useId();
     const innerRef = useRef<HTMLInputElement | null>(null);
     const refs = useShareRefs([innerRef, ref]);
@@ -19,7 +27,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={styles.wrapper}>
         <button
-          className={styles.checkbox}
+          className={clsx(styles.checkbox, error && styles.checkbox_error)}
           type={"button"}
           onClick={() => innerRef.current!.click()}
         >
@@ -37,7 +45,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             }}
           />
         </button>
-        {label && <Label htmlFor={id}>{label}</Label>}
+        {label && (
+          <Label htmlFor={id} forRequiredField={required}>
+            {label}
+          </Label>
+        )}
       </div>
     );
   },

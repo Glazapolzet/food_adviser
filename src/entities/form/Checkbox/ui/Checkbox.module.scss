@@ -24,6 +24,11 @@
     background-color: var(--primary-color-1);
     border: 1px solid var(--border-color);
   }
+
+  &_error {
+    border: 1px solid var(--primary-color-3);
+    color: var(--primary-color-3);
+  }
 }
 
 :has(> .hiddenCheckbox:checked) {
@@ -40,8 +45,8 @@
 }
 
 .tickIcon {
-  width: 70%;
-  height: 70%;
+  width: 60%;
+  height: 60%;
   visibility: hidden;
   background-repeat: no-repeat;
   background-position: center;

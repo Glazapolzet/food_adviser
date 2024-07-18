@@ -1,34 +1,19 @@
 .form {
-  display: grid;
-  grid-template-areas:
-    "main info"
-    "nutrients info"
-    "nutrients ingredients"
-    "nutrients category"
-    ". cover";
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
-.fieldsetMain {
-  grid-area: main;
-}
+.fieldsetMain {}
 
-.fieldsetCover {
-  grid-area: cover;
-}
+.fieldsetCover {}
 
-.fieldsetIngredients {
-  grid-area: ingredients;
-}
+.fieldsetIngredients {}
 
-.fieldsetCategory {
-  grid-area: category;
-}
+.fieldsetCategory {}
 
-.fieldsetNutrients {
-  grid-area: nutrients;
-}
+.fieldsetNutrients {}
 
-.fieldsetInfo {
-  grid-area: info;
-}
+.fieldsetInfo {}
+
+.fieldsetGuideline {}
