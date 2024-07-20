@@ -1,6 +1,6 @@
 import { type FC, Suspense } from "react";
 import styles from "./CreateRecipe.module.scss";
-import { Button, Headline, Paragraph, Tag } from "shared/ui";
+import { Button } from "shared/ui";
 import { type TCategory } from "shared/api/categories";
 import { useLoaderData, Await } from "react-router-dom";
 import { RecipeForm } from "features/recipe-form";
