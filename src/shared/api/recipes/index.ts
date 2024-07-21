@@ -1,2 +1,8 @@
-export { getRecipes } from "./recipes";
-export type { TRecipe } from "./types";
+export {
+  getRecipes,
+  getRecipe,
+  createRecipe,
+  editRecipe,
+  deleteRecipe,
+} from "./recipes";
+export type { TResponseRecipe, TResponseRecipes, TRecipe } from "./types";

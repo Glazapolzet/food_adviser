@@ -1,4 +1,4 @@
-import { type TCategory } from "shared/api/categories";
+import { type TResponseCategory } from "shared/api/categories";
 import styles from "./RecipeForm.module.scss";
 import { ComponentPropsWithoutRef, forwardRef, useEffect } from "react";
 import {
@@ -22,7 +22,7 @@ import { Fieldset } from "shared/ui";
 
 interface RecipeFormProps
   extends Pick<ComponentPropsWithoutRef<"form">, "id" | "name"> {
-  categories: Array<TCategory>;
+  categories: Array<TResponseCategory>;
 }
 
 export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(

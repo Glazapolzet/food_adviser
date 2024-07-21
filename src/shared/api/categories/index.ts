@@ -1,2 +1,12 @@
-export { getCategories } from "./categories";
-export type { TCategory } from "./types";
+export {
+  getCategories,
+  getCategory,
+  createCategory,
+  editCategory,
+  deleteCategory,
+} from "./categories";
+export type {
+  TResponseCategory,
+  TResponseCategories,
+  TCategory,
+} from "./types";

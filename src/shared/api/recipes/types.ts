@@ -1,15 +1,31 @@
+import { StringifyObjectValues } from "shared/types";
+
 export interface TRecipe {
-  readonly id: string;
-  readonly cover: string;
-  readonly title: string;
-  readonly description: string;
-  readonly timeToCook: number;
-  readonly difficulty: string;
-  readonly servings: number;
-  readonly category: string;
-  readonly ingredients: string[];
-  readonly nutrients: {
+  cover: string;
+  title: string;
+  description: string;
+  timeToCook: number;
+  difficulty: string;
+  servings: number;
+  category: string;
+  ingredients: string[];
+  nutrients: {
     [index: string]: number;
   };
-  readonly guideline: File;
+  guideline: string;
 }
+
+export interface TResponseRecipe extends Readonly<TRecipe> {
+  readonly id: string;
+}
+
+export interface TResponseRecipes {
+  readonly count: number;
+  readonly items: Array<TResponseRecipe>;
+}
+
+// type TSearchParams = ConstructorParameters<typeof URLSearchParams>[0];
+
+export type TSearchParams =
+  | StringifyObjectValues<{ categoryId: string }>
+  | StringifyObjectValues<{ categoryName: string }>;

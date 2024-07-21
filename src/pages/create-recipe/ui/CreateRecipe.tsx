@@ -1,13 +1,15 @@
 import { type FC, Suspense } from "react";
 import styles from "./CreateRecipe.module.scss";
 import { Button } from "shared/ui";
-import { type TCategory } from "shared/api/categories";
+import { type TResponseCategory } from "shared/api/categories";
 import { useLoaderData, Await } from "react-router-dom";
 import { RecipeForm } from "features/recipe-form";
 import { Preface } from "entities/preface";
 
 export const CreateRecipe: FC = () => {
-  const data = useLoaderData() as { categories: Promise<Array<TCategory>> };
+  const data = useLoaderData() as {
+    categories: Promise<Array<TResponseCategory>>;
+  };
 
   const prefaceData = {
     tagName: "Create",
@@ -29,7 +31,7 @@ export const CreateRecipe: FC = () => {
         <div className={styles.formContainer}>
           <Suspense fallback={<div>loading form</div>}>
             <Await resolve={data.categories}>
-              {(categories: Array<TCategory>) => {
+              {(categories: Array<TResponseCategory>) => {
                 return <RecipeForm id={"recipeForm"} categories={categories} />;
               }}
             </Await>

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://localhost:8000";
 
 const headers = {
   "Content-Type": "application/json",
@@ -20,8 +20,14 @@ class Api {
     this.headers = headers;
   }
 
-  async fetch<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-    const res: Response = await fetch(this.baseUrl + endpoint, options);
+  async fetch<T>(
+    endpoint: string,
+    { headers, ...options }: RequestInit = {},
+  ): Promise<T> {
+    const res: Response = await fetch(this.baseUrl + endpoint, {
+      headers: Object.assign(headers, this.headers),
+      ...options,
+    });
 
     if (!res.ok) {
       return Promise.reject(new Error(res.statusText));
@@ -42,4 +48,4 @@ class Api {
   }
 }
 
-export const apiInstance = new Api(BASE_URL, headers);
+export const apiInstance = new Api(API_BASE_URL, headers);

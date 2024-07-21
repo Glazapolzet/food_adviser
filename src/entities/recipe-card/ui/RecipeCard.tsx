@@ -2,13 +2,13 @@ import { type FC, type JSX } from "react";
 import styles from "./RecipeCard.module.scss";
 import { Headline, Paragraph } from "shared/ui";
 import { Info } from "./Info/Info";
-import { TRecipe } from "shared/api/recipes";
+import { TResponseRecipe } from "shared/api/recipes";
 import { Cover } from "./Cover/Cover";
 
 //TODO: remove ReactNode/JSX.Element and make more strict type check on buttonComponent
 
 interface RecipeCardProps {
-  content: TRecipe;
+  content: TResponseRecipe;
   buttonComponent: JSX.Element;
 }
 

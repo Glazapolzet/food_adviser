@@ -1,13 +1,15 @@
 import styles from "./Categories.module.scss";
 import { Preface } from "entities/preface";
 import { TabBar, TabBarSkeleton } from "entities/tabbar";
-import { Outlet, useLoaderData, generatePath, Await } from "react-router-dom";
+import { Await, generatePath, Outlet, useLoaderData } from "react-router-dom";
 import { type FC, Suspense } from "react";
-import { TCategory } from "shared/api/categories";
+import { TResponseCategory } from "shared/api/categories";
 import { PATH_CONFIG } from "shared/config";
 
 export const Categories: FC = () => {
-  const data = useLoaderData() as { categories: Promise<Array<TCategory>> };
+  const data = useLoaderData() as {
+    categories: Promise<Array<TResponseCategory>>;
+  };
 
   const prefaceData = {
     tagName: "Recipes",
@@ -27,7 +29,7 @@ export const Categories: FC = () => {
       <div className={styles.tabbarContainer}>
         <Suspense fallback={<TabBarSkeleton count={5} />}>
           <Await resolve={data.categories}>
-            {(categories: Array<TCategory>) => {
+            {(categories: Array<TResponseCategory>) => {
               const tabBarLinks = categories.map((category) => {
                 return {
                   link: generatePath(

@@ -1,8 +1,12 @@
-export interface TCategories {
-  categories: Array<TCategory>;
+export interface TCategory {
+  name: string;
 }
 
-export interface TCategory {
+export interface TResponseCategory extends Readonly<TCategory> {
   readonly id: string;
-  readonly name: string;
+}
+
+export interface TResponseCategories {
+  readonly count: number;
+  readonly items: Array<TResponseCategory>;
 }

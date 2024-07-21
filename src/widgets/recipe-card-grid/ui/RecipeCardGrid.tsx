@@ -2,12 +2,12 @@ import styles from "./RecipeCardGrid.module.scss";
 import { type FC } from "react";
 import { Button } from "shared/ui";
 import { useNavigate, generatePath } from "react-router-dom";
-import { TRecipe } from "shared/api/recipes";
+import { TResponseRecipe } from "shared/api/recipes";
 import { PATH_CONFIG } from "shared/config";
 import { RecipeCard } from "entities/recipe-card";
 
 interface RecipeCardGridProps {
-  items: Array<TRecipe>;
+  items: Array<TResponseRecipe>;
 }
 
 export const RecipeCardGrid: FC<RecipeCardGridProps> = ({ items }) => {
