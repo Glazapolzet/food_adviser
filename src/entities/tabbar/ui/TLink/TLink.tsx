@@ -11,6 +11,7 @@ interface TProps extends Omit<NavLinkProps, "to"> {
 export const TLink: FC<TProps> = ({ link, children, ...props }) => {
   return (
     <NavLink
+      end={true}
       to={link}
       className={({ isActive }) =>
         clsx(styles.tablink, {

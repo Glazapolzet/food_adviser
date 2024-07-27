@@ -2,13 +2,14 @@ import { type TResponseCategory } from "shared/api/categories";
 import styles from "./RecipeForm.module.scss";
 import { ComponentPropsWithoutRef, forwardRef, useEffect } from "react";
 import {
-  Select,
-  Upload,
-  Input,
-  CheckboxList,
   Checkbox,
+  CheckboxList,
   ExpandableInput,
+  FieldSwitch,
+  Input,
+  Select,
   TextArea,
+  Upload,
 } from "entities/form";
 import {
   FieldErrors,
@@ -18,7 +19,9 @@ import {
 } from "react-hook-form";
 import { defaultFormValues, inputsConfig } from "../config/inputs";
 import type { TFormValues } from "../types/types";
-import { Fieldset } from "shared/ui";
+import { Fieldset, FormError } from "shared/ui";
+import { isObjectEmpty, toBase64 } from "shared/lib";
+import { createRecipe } from "shared/api/recipes";
 
 interface RecipeFormProps
   extends Pick<ComponentPropsWithoutRef<"form">, "id" | "name"> {
@@ -31,6 +34,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
       register,
       control,
       handleSubmit,
+      resetField,
       formState: { errors },
     } = useForm<TFormValues>({
       mode: "onBlur",
@@ -38,17 +42,32 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
       defaultValues: defaultFormValues,
     });
 
-    inputsConfig.category.options = categories
-      .map((category) => category.name)
-      .filter((c) => c !== "all");
+    const onSubmit: SubmitHandler<TFormValues> = async ({
+      category: formCategory,
+      cover: formCover,
+      ingredients: formIngredients,
+      ...formData
+    }) => {
+      const category = categories.find(
+        (category) => category.name === formCategory,
+      ).id;
+      const ingredients = formIngredients.map(({ name }) => name);
+      const cover = formCover
+        ? typeof formCover === "string"
+          ? formCover
+          : await toBase64(formCover[0])
+        : formCover;
 
-    const onSubmit: SubmitHandler<TFormValues> = (data) => {
-      console.log({ data });
+      const data = { cover, ingredients, category, ...formData };
+      const serv = await createRecipe(data);
+      console.log({ serv });
     };
 
     useEffect(() => {
       console.log({ errors });
     });
+
+    inputsConfig.category.options = categories.map((category) => category.name);
 
     return (
       <form
@@ -156,15 +175,40 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
         </Fieldset>
 
         <Fieldset legend={"cover"} className={styles.fieldsetCover}>
-          <Upload
-            required={inputsConfig.cover.required}
+          <FieldSwitch
             label={inputsConfig.cover.label}
-            multiple={false}
-            accept={"image/*"}
-            {...register<FieldPath<TFormValues>>(
-              inputsConfig.cover.name,
-              inputsConfig.cover.registerOptions,
-            )}
+            fields={[
+              {
+                label: "upload image",
+                onSwitch: () => resetField<"cover">(inputsConfig.cover.name),
+                component: (
+                  <Upload
+                    id={"upload"}
+                    required={inputsConfig.cover.required}
+                    multiple={false}
+                    accept={"image/*"}
+                    {...register<FieldPath<TFormValues>>(
+                      inputsConfig.cover.name,
+                      inputsConfig.cover.registerOptions,
+                    )}
+                  />
+                ),
+              },
+              {
+                label: "insert link",
+                onSwitch: () => resetField<"cover">(inputsConfig.cover.name),
+                component: (
+                  <Input
+                    id={"link"}
+                    required={inputsConfig.cover.required}
+                    {...register<FieldPath<TFormValues>>(
+                      inputsConfig.cover.name,
+                      inputsConfig.cover.registerOptions,
+                    )}
+                  />
+                ),
+              },
+            ]}
           />
         </Fieldset>
 
@@ -201,6 +245,10 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             )}
           />
         </Fieldset>
+
+        {!isObjectEmpty(errors) && (
+          <FormError message={`Please fix errors to submit your recipe`} />
+        )}
       </form>
     );
   },

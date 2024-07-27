@@ -2,17 +2,18 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
+  justify-content: space-between;
 }
 
 .inputContainer {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 auto;
+  margin: 0;
 }
 
 .input {
-  margin: var(--errors-size) 0;
+  margin: var(--field-errors-size) 0;
   width: var(--inputs-width);
   box-sizing: border-box;
   font-family: var(--primary-ff);

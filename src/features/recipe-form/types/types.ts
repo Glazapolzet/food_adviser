@@ -5,24 +5,11 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 import { HTMLInputTypeAttribute } from "react";
+import { TRecipe } from "shared/api/recipes";
 
-export type TFormValues = {
-  title: string;
-  cover: File;
-  description: string;
+export type TFormValues = Omit<TRecipe, "cover" | "ingredients"> & {
+  cover: FileList | string;
   ingredients: Array<{ name: string }>;
-  nutrients: {
-    proteins: number;
-    fats: number;
-    carbohydrates: number;
-    fiber: number;
-    kcal: number;
-  };
-  timeToCook: number;
-  difficulty: string;
-  servings: number;
-  category: string;
-  guideline: string;
 };
 
 interface TInputConfig<

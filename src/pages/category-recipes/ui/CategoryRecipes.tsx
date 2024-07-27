@@ -1,21 +1,21 @@
 import { type FC, Suspense } from "react";
-import { useLoaderData, Await } from "react-router-dom";
+import { Await, useLoaderData } from "react-router-dom";
 import {
   RecipeCardGrid,
   RecipeCardGridSkeleton,
 } from "widgets/recipe-card-grid";
-import { TResponseRecipe } from "shared/api/recipes";
+import { TResponseRecipes } from "shared/api/recipes";
 import styles from "./CategoryRecipes.module.scss";
 
 export const CategoryRecipes: FC = () => {
-  const data = useLoaderData() as { recipes: Promise<Array<TResponseRecipe>> };
+  const data = useLoaderData() as { recipes: Promise<TResponseRecipes> };
 
   return (
     <div className={styles.recipesContainer}>
       <Suspense fallback={<RecipeCardGridSkeleton count={1} />}>
         <Await resolve={data.recipes}>
-          {(recipes: Array<TResponseRecipe>) => {
-            return <RecipeCardGrid items={recipes} />;
+          {(recipes: TResponseRecipes) => {
+            return <RecipeCardGrid items={recipes.items} />;
           }}
         </Await>
       </Suspense>

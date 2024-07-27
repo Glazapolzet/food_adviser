@@ -6,20 +6,23 @@ import {
   useRef,
   useState,
 } from "react";
-import { Headline, Paragraph, Label } from "shared/ui";
+import { Headline, Label, Paragraph } from "shared/ui";
 import { useShareRefs } from "shared/lib";
 import styles from "./Upload.module.scss";
 import uploadIcon from "assets/icons/ic_round-cloud-upload.svg";
 import trashIcon from "assets/icons/clarity_trash-solid.svg";
 import { bytesToMB } from "../lib/helpers";
+import { clsx } from "clsx";
 
-interface UploadProps
-  extends Omit<ComponentPropsWithoutRef<"input">, "type" | "className"> {
+interface UploadProps extends Omit<ComponentPropsWithoutRef<"input">, "type"> {
   label?: string;
 }
 
 export const Upload = forwardRef<HTMLInputElement, UploadProps>(
-  ({ label, onChange: onSideChange, multiple, required, ...props }, ref) => {
+  (
+    { label, onChange: onSideChange, multiple, required, className, ...props },
+    ref,
+  ) => {
     const id = useId();
     const innerRef = useRef<HTMLInputElement | null>(null);
     const refs = useShareRefs([ref, innerRef]);
@@ -80,7 +83,11 @@ export const Upload = forwardRef<HTMLInputElement, UploadProps>(
     };
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        className={clsx(styles.wrapper, {
+          [className ?? ""]: className,
+        })}
+      >
         {label && (
           <Label htmlFor={id} forRequiredField={required}>
             {label}

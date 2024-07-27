@@ -7,3 +7,5 @@ export { Label } from "./Label/Label";
 export { Headline } from "./Headline/Headline";
 export { SpinnerRoundOutlined } from "./SpinnerRoundOutlined/SpinnerRoundOutlined";
 export { SpinnerCircular } from "./SpinnerCircular/SpinnerCircular";
+export { FieldError } from "./FieldError/FieldError";
+export { FormError } from "./FormError/FormError";

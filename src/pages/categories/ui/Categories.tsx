@@ -3,12 +3,12 @@ import { Preface } from "entities/preface";
 import { TabBar, TabBarSkeleton } from "entities/tabbar";
 import { Await, generatePath, Outlet, useLoaderData } from "react-router-dom";
 import { type FC, Suspense } from "react";
-import { TResponseCategory } from "shared/api/categories";
+import { TResponseCategories } from "shared/api/categories";
 import { PATH_CONFIG } from "shared/config";
 
 export const Categories: FC = () => {
   const data = useLoaderData() as {
-    categories: Promise<Array<TResponseCategory>>;
+    categories: Promise<TResponseCategories>;
   };
 
   const prefaceData = {
@@ -16,6 +16,13 @@ export const Categories: FC = () => {
     title: "Recipes",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   };
+
+  const defaultLinks = [
+    {
+      link: PATH_CONFIG.root.recipes.categories.fullPath,
+      title: "all",
+    },
+  ];
 
   return (
     <section className={styles.categories}>
@@ -29,20 +36,20 @@ export const Categories: FC = () => {
       <div className={styles.tabbarContainer}>
         <Suspense fallback={<TabBarSkeleton count={5} />}>
           <Await resolve={data.categories}>
-            {(categories: Array<TResponseCategory>) => {
-              const tabBarLinks = categories.map((category) => {
+            {(categories: TResponseCategories) => {
+              const categoriesLinks = categories.items.map((category) => {
                 return {
                   link: generatePath(
                     PATH_CONFIG.root.recipes.categories.category.fullPath,
                     {
-                      categoryName: category.name,
+                      categoryId: category.id,
                     },
                   ),
                   title: category.name,
                 };
               });
 
-              return <TabBar items={tabBarLinks} />;
+              return <TabBar items={[...defaultLinks, ...categoriesLinks]} />;
             }}
           </Await>
         </Suspense>

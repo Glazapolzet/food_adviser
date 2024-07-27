@@ -36,12 +36,12 @@ $dark-color-2: #262522;
   --card-border-color: rgba(#{HexToRGB($dark-color-2)}, .16);
 
   --dark-headline-color: var(--dark-color-2, #262522);
-  --dark-paragraph-color: rgba(#{HexToRGB($dark-color-2)}, 0.8);
+  --dark-paragraph-color: rgba(#{HexToRGB($dark-color-2)}, .8);
   --dark-button-bg: var(--dark-color-2, #262522);
   --dark-button-text: var(--light-color-3, #F0EBE1);
 
   --light-headline-color: var(--light-color-3, #F0EBE1);
-  --light-paragraph-color: rgba(#{HexToRGB($light-color-5)}, 0.8);
+  --light-paragraph-color: rgba(#{HexToRGB($light-color-5)}, .8);
   --light-button-bg: transparent;
   --light-button-text: var(--dark-color-2, #262522);
 
@@ -57,7 +57,9 @@ $dark-color-2: #262522;
   --fw-bold: 700;
   --fw-extrabold: 800;
 
-  --errors-size: 0.7rem;
+  --error-color: var(--primary-color-3);
+  --error-bg-color: rgba(#{HexToRGB($primary-color-3)}, .3);
+  --field-errors-size: 0.7rem;
 
   --inactive-element-opacity: .5;
   --active-element-opacity: 1;

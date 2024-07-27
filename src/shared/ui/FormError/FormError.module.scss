@@ -1,0 +1,36 @@
+.formError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  row-gap: 5px;
+  padding: 20px 32px;
+  background-color: var(--error-bg-color);
+  border: 1px solid var(--error-color);
+  border-radius: 18px;
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px 16px;
+  border: 1px solid var(--error-color);
+  background-color: var(--error-color);
+  border-radius: 6px;
+}
+
+.errorText {
+  margin: 0;
+  font-family: var(--primary-ff);
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  color: var(--light-color-2);
+  z-index: 5;
+}

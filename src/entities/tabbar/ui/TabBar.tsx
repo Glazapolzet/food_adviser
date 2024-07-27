@@ -13,7 +13,7 @@ interface TabBarProps {
 
 export const TabBar: FC<TabBarProps> = ({ items, ...props }) => {
   const tabBarItems = items.map((item) => (
-    <li key={item.title} className={styles.item}>
+    <li key={item.link + item.title} className={styles.item}>
       <TLink link={item.link} {...props}>
         {item.title}
       </TLink>

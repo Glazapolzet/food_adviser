@@ -2,7 +2,7 @@ import { type TFormValues } from "../types/types";
 
 export const defaultFormValues: TFormValues = {
   title: "",
-  cover: new File([], ""),
+  cover: "",
   description: "",
   ingredients: [{ name: "" }],
   nutrients: {
@@ -94,57 +94,62 @@ export const inputsConfig = {
   },
   nutrients: [
     {
-      required: false,
+      required: true,
       name: "proteins",
       fullName: "nutrients.proteins",
       label: "Proteins",
       type: "number",
       placeholder: "g. in 100g.",
       registerOptions: {
+        required: "Proteins is required",
         valueAsNumber: true,
       },
     },
     {
-      required: false,
+      required: true,
       name: "fats",
       fullName: "nutrients.fats",
       label: "Fats",
       type: "number",
       placeholder: "g. in 100g.",
       registerOptions: {
+        required: "Fats is required",
         valueAsNumber: true,
       },
     },
     {
-      required: false,
+      required: true,
       name: "carbohydrates",
       fullName: "nutrients.carbohydrates",
       label: "Carbohydrates",
       type: "number",
       placeholder: "g. in 100g.",
       registerOptions: {
+        required: "Carbohydrates is required",
         valueAsNumber: true,
       },
     },
     {
-      required: false,
+      required: true,
       name: "fiber",
       fullName: "nutrients.fiber",
       label: "Fiber",
       type: "number",
       placeholder: "g. in 100g.",
       registerOptions: {
+        required: "Fiber is required",
         valueAsNumber: true,
       },
     },
     {
-      required: false,
+      required: true,
       name: "kcal",
       fullName: "nutrients.kcal",
       label: "Kcal",
       type: "number",
       placeholder: "kcal in 100g.",
       registerOptions: {
+        required: "Kcal is required",
         valueAsNumber: true,
       },
     },

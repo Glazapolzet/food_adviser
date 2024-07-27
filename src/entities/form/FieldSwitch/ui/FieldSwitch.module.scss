@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  justify-content: space-between;
+}
+
+.fieldSwitch {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--input-bg-color);
+  padding: 0 25px 10px 25px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  border: 1px solid var(--dim-border-color);
+}
+
+.buttonList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  column-gap: 10px;
+  justify-content: end;
+}
+
+.buttonListItem {
+  display: flex;
+}
+
+.button {
+  position: relative;
+  top: -1px;
+  padding: 0 15px 5px 15px;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: var(--dim-border-color);
+  border-top-color: transparent;
+  font-size: .875rem;
+  font-family: var(--primary-ff);
+  font-weight: var(--fw-light);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  line-height: 1.7;
+  color: var(--dark-color-2);
+  will-change: background-color, border-color, color;
+  transition: background-color var(--hover-transition), border-color var(--hover-transition);
+
+  &:hover {
+    background-color: var(--primary-color-3);
+    border-color: var(--dim-border-color);
+    color: var(--light-color-2);
+  }
+
+  &_active {
+    background-color: var(--primary-color-3);
+    border-color: var(--dim-border-color);
+    color: var(--light-color-2);
+  }
+}
+
+.field {}

@@ -5,7 +5,7 @@ import { Info } from "./Info/Info";
 import { TResponseRecipe } from "shared/api/recipes";
 import { Cover } from "./Cover/Cover";
 
-//TODO: remove ReactNode/JSX.Element and make more strict type check on buttonComponent
+//TODO: remove ReactNode/JSX.Element and make more strict type check for buttonComponent
 
 interface RecipeCardProps {
   content: TResponseRecipe;

@@ -12,20 +12,27 @@ import tickIcon from "assets/icons/tick.svg";
 import { clsx } from "clsx";
 
 interface CheckboxProps
-  extends Omit<ComponentPropsWithoutRef<"input">, "id" | "type" | "className"> {
+  extends Omit<ComponentPropsWithoutRef<"input">, "id" | "type"> {
   error?: string;
   label?: string;
   type?: Extract<HTMLInputTypeAttribute, "checkbox" | "radio">;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, type = "checkbox", value, error, required, ...props }, ref) => {
+  (
+    { label, type = "checkbox", value, error, required, className, ...props },
+    ref,
+  ) => {
     const id = useId();
     const innerRef = useRef<HTMLInputElement | null>(null);
     const refs = useShareRefs([innerRef, ref]);
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        className={clsx(styles.wrapper, {
+          [className ?? ""]: className,
+        })}
+      >
         <button
           className={clsx(styles.checkbox, error && styles.checkbox_error)}
           type={"button"}

@@ -1,11 +1,17 @@
 import { type FC, lazy } from "react";
 import {
   createBrowserRouter,
-  RouterProvider,
   generatePath,
   type RouteObject,
+  RouterProvider,
 } from "react-router-dom";
 import { Layout } from "../layout/Layout";
+import { categoriesLoader } from "pages/categories";
+import { categoryRecipesLoader } from "pages/category-recipes";
+import { recipeLoader } from "pages/recipe";
+import { PATH_CONFIG } from "shared/config";
+import CreateRecipe, { createRecipeLoader } from "pages/create-recipe";
+
 const Categories = lazy(() => import("pages/categories"));
 const CategoryRecipes = lazy(() => import("pages/category-recipes"));
 const Recipe = lazy(() => import("pages/recipe"));
@@ -14,11 +20,6 @@ const Redirect = lazy(() =>
     default: Redirect,
   })),
 );
-import { categoriesLoader } from "pages/categories";
-import { categoryRecipesLoader } from "pages/category-recipes";
-import { recipeLoader } from "pages/recipe";
-import { PATH_CONFIG } from "shared/config";
-import CreateRecipe, { createRecipeLoader } from "pages/create-recipe";
 
 const routes: RouteObject = {
   id: PATH_CONFIG.root.id,
@@ -41,12 +42,7 @@ const routes: RouteObject = {
       element: (
         <Redirect
           from={PATH_CONFIG.root.recipes.fullPath}
-          to={generatePath(
-            PATH_CONFIG.root.recipes.categories.category.fullPath,
-            {
-              categoryName: "all",
-            },
-          )}
+          to={generatePath(PATH_CONFIG.root.recipes.categories.fullPath)}
           options={{ replace: true }}
         />
       ),
@@ -57,6 +53,11 @@ const routes: RouteObject = {
           element: <Categories />,
           loader: categoriesLoader,
           children: [
+            {
+              index: true,
+              element: <CategoryRecipes />,
+              loader: categoryRecipesLoader,
+            },
             {
               id: PATH_CONFIG.root.recipes.categories.category.id,
               path: PATH_CONFIG.root.recipes.categories.category.path,

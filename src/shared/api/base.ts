@@ -4,11 +4,16 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-type JSONResponse<T> = {
-  data?: T;
-  error?: {
-    message: string;
-  };
+type TResponseSuccess<T> = T;
+
+type TResponseError = {
+  msg: string;
+};
+
+type JSONResponse<T> = TResponseSuccess<T> | TResponseError;
+
+const isResponseError = <T>(res: JSONResponse<T>): res is TResponseError => {
+  return (res as TResponseError).msg !== undefined;
 };
 
 class Api {
@@ -22,7 +27,7 @@ class Api {
 
   async fetch<T>(
     endpoint: string,
-    { headers, ...options }: RequestInit = {},
+    { headers = {}, ...options }: RequestInit = {},
   ): Promise<T> {
     const res: Response = await fetch(this.baseUrl + endpoint, {
       headers: Object.assign(headers, this.headers),
@@ -33,12 +38,13 @@ class Api {
       return Promise.reject(new Error(res.statusText));
     }
 
-    const { data, error }: JSONResponse<T> =
-      (await res.json()) as JSONResponse<T>;
+    const awaited: JSONResponse<T> = (await res.json()) as JSONResponse<T>;
 
-    if (error) {
-      return Promise.reject(new Error(error.message));
+    if (isResponseError<T>(awaited)) {
+      return Promise.reject(new Error(awaited.msg));
     }
+
+    const data = awaited;
 
     if (!data) {
       return Promise.reject(new Error("No data"));

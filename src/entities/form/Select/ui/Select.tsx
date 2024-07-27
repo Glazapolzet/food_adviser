@@ -6,7 +6,7 @@ import { clsx } from "clsx";
 interface SelectProps
   extends Omit<
     ComponentPropsWithoutRef<"select">,
-    "className" | "defaultValue" | "children"
+    "defaultValue" | "children"
   > {
   name: string;
   label?: string;
@@ -15,11 +15,15 @@ interface SelectProps
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ label, name, options, error, required, ...props }, ref) => {
+  ({ label, name, options, error, required, className, ...props }, ref) => {
     const id = useId();
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        className={clsx(styles.wrapper, {
+          [className ?? ""]: className,
+        })}
+      >
         {label && (
           <Label htmlFor={id} forRequiredField={required}>
             {label}

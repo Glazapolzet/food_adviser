@@ -1,7 +1,7 @@
 import {
   type Control,
   type FieldArray,
-  FieldErrors,
+  type FieldErrors,
   type FieldPath,
   type FieldValues,
   type RegisterOptions,
@@ -14,6 +14,7 @@ import { Label } from "shared/ui";
 import plusIcon from "assets/icons/plus.svg";
 import minusIcon from "assets/icons/minus.svg";
 import { ComponentPropsWithRef } from "react";
+import { clsx } from "clsx";
 
 interface ExpandableInputProps<
   TFormValues extends FieldValues,
@@ -23,7 +24,7 @@ interface ExpandableInputProps<
   control: Control<TFormValues>;
   register: UseFormRegister<TFormValues>;
   defaultValue: FieldArray<TFormValues, TFieldName>;
-  errors?: Array<FieldErrors<TFieldName>>;
+  errors?: Array<FieldErrors<TFieldName>> | undefined;
   label?: string;
   validationOptions?: { [key: string]: RegisterOptions };
 }
@@ -40,6 +41,7 @@ export const ExpandableInput = <
   errors,
   label,
   validationOptions,
+  className,
   ...props
 }: ExpandableInputProps<TFormValues, TFieldName>) => {
   const { fields, remove, insert } = useFieldArray<
@@ -54,7 +56,11 @@ export const ExpandableInput = <
   const keys = Object.keys(defaultValue) as Array<TFieldName>;
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={clsx(styles.wrapper, {
+        [className ?? ""]: className,
+      })}
+    >
       {label && <Label forRequiredField={required}>{label}</Label>}
       <ul className={styles.inputList}>
         {fields.map((field, index) => (
@@ -90,7 +96,7 @@ export const ExpandableInput = <
             {keys.map((key) => (
               <Input
                 key={key}
-                className={styles.input}
+                className={styles.inputContainer}
                 error={errors?.[index]?.[key].message}
                 {...props}
                 {...register(

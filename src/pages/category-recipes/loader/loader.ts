@@ -1,14 +1,23 @@
-import { LoaderFunction, LoaderFunctionArgs, defer } from "react-router-dom";
+import { defer, LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
 import { getRecipes } from "shared/api/recipes";
+import { isObjectEmpty } from "shared/lib";
 
 type DynamicPathParams = {
   params: {
-    categoryName: string;
+    categoryId?: string;
   };
 };
 
 export const loader: LoaderFunction = ({
   params,
 }: LoaderFunctionArgs<DynamicPathParams>) => {
-  return defer({ recipes: getRecipes(params.categoryName ?? "") });
+  if (isObjectEmpty(params)) {
+    return defer({
+      recipes: getRecipes(),
+    });
+  }
+
+  return defer({
+    recipes: getRecipes({ categoryId: params.categoryId }),
+  });
 };

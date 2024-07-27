@@ -5,9 +5,8 @@ import {
   useId,
 } from "react";
 import styles from "./Input.module.scss";
-import { Label } from "shared/ui";
+import { FieldError, Label } from "shared/ui";
 import { clsx } from "clsx";
-import { Error } from "shared/ui/Error/Error";
 
 interface InputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "id" | "type"> {
@@ -31,7 +30,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const id = useId();
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        className={clsx(styles.wrapper, {
+          [className ?? ""]: className,
+        })}
+      >
         {label && (
           <Label htmlFor={id} forRequiredField={required}>
             {label}
@@ -43,12 +46,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id}
             ref={ref}
             placeholder={placeholder}
-            className={clsx(styles.input, error && styles.input_error, {
-              [className ?? ""]: className,
-            })}
+            className={clsx(styles.input, error && styles.input_error)}
             {...props}
           />
-          {error && <Error message={error} className={styles.error} />}
+          {error && <FieldError message={error} className={styles.error} />}
         </div>
       </div>
     );

@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
+  justify-content: space-between;
 }
 
 .checkboxList {
-  margin-left: auto;
   display: flex;
   flex-direction: column;
   row-gap: 5px;

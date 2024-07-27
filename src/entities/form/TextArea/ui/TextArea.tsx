@@ -14,7 +14,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const id = useId();
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        className={clsx(styles.wrapper, {
+          [className ?? ""]: className,
+        })}
+      >
         {label && (
           <Label htmlFor={id} forRequiredField={required}>
             {label}
@@ -23,9 +27,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <textarea
           id={id}
           ref={ref}
-          className={clsx(styles.textarea, error && styles.textarea_error, {
-            [className ?? ""]: className,
-          })}
+          className={clsx(styles.textarea, error && styles.textarea_error)}
           {...props}
         />
       </div>

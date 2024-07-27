@@ -1,19 +1,18 @@
 import { clsx } from "clsx";
-import styles from "./Error.module.scss";
+import styles from "./FieldError.module.scss";
 import { type FC } from "react";
 
-interface ErrorProps {
+interface FieldErrorProps {
   message: string;
   className?: string;
 }
 
-export const Error: FC<ErrorProps> = ({ message, className, ...props }) => {
+export const FieldError: FC<FieldErrorProps> = ({ message, className }) => {
   return (
     <span
       className={clsx(styles.error, {
         [className ?? ""]: className,
       })}
-      {...props}
     >
       {message}
     </span>

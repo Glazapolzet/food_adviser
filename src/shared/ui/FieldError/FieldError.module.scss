@@ -1,7 +1,7 @@
 .error {
   font-family: var(--primary-ff);
-  font-size: var(--errors-size);
+  font-size: var(--field-errors-size);
   font-weight: var(--fw-light);
   line-height: 1;
-  color: #EE6352;
+  color: var(--error-color);
 }
