@@ -1,12 +1,12 @@
-$primary-color-1: #9FDC26;
-$primary-color-2: #F29C33;
-$primary-color-3: #EE6352;
-$primary-color-4: #C4E5FC;
-$light-color-1: #FFFFFF;
+$primary-color-1: #9fdc26;
+$primary-color-2: #f29c33;
+$primary-color-3: #ee6352;
+$primary-color-4: #c4e5fc;
+$light-color-1: #ffffff;
 $light-color-2: #fffcf9;
-$light-color-3: #F0EBE1;
-$light-color-4: #E9E9ED;
-$light-color-5: #F0EBE1CC;
+$light-color-3: #f0ebe1;
+$light-color-4: #e9e9ed;
+$light-color-5: #f0ebe1cc;
 $dark-color-1: #000000;
 $dark-color-2: #262522;
 
@@ -27,26 +27,26 @@ $dark-color-2: #262522;
   --dark-color-1: #{$dark-color-1};
   --dark-color-2: #{$dark-color-2};
 
-  --bg-color: var(--light-color-3, #F0EBE1);
-  --card-bg-color: var(--light-color-2, #FFFBF2);
-  --input-bg-color: var(--light-color-1, #FFFFFF);
+  --bg-color: var(--light-color-3, #f0ebe1);
+  --card-bg-color: var(--light-color-2, #fffbf2);
+  --input-bg-color: var(--light-color-1, #ffffff);
 
   --border-color: var(--dark-color-2, #262522);
-  --dim-border-color: rgba(#{HexToRGB($dark-color-2)}, .26);
-  --card-border-color: rgba(#{HexToRGB($dark-color-2)}, .16);
+  --dim-border-color: rgba(#{HexToRGB($dark-color-2)}, 0.26);
+  --card-border-color: rgba(#{HexToRGB($dark-color-2)}, 0.16);
 
   --dark-headline-color: var(--dark-color-2, #262522);
-  --dark-paragraph-color: rgba(#{HexToRGB($dark-color-2)}, .8);
+  --dark-paragraph-color: rgba(#{HexToRGB($dark-color-2)}, 0.8);
   --dark-button-bg: var(--dark-color-2, #262522);
-  --dark-button-text: var(--light-color-3, #F0EBE1);
+  --dark-button-text: var(--light-color-3, #f0ebe1);
 
-  --light-headline-color: var(--light-color-3, #F0EBE1);
-  --light-paragraph-color: rgba(#{HexToRGB($light-color-5)}, .8);
+  --light-headline-color: var(--light-color-3, #f0ebe1);
+  --light-paragraph-color: rgba(#{HexToRGB($light-color-5)}, 0.8);
   --light-button-bg: transparent;
   --light-button-text: var(--dark-color-2, #262522);
 
-  --primary-ff: 'Roboto', Arial, sans-serif;
-  --secondary-ff: 'Montserrat', Monaco, monospace;
+  --primary-ff: "Roboto", Arial, sans-serif;
+  --secondary-ff: "Montserrat", Monaco, monospace;
 
   --inputs-width: 19rem;
 
@@ -58,13 +58,14 @@ $dark-color-2: #262522;
   --fw-extrabold: 800;
 
   --error-color: var(--primary-color-3);
-  --error-bg-color: rgba(#{HexToRGB($primary-color-3)}, .3);
+  --error-bg-color-1: rgba(#{HexToRGB($primary-color-3)}, 0.3);
+  --error-bg-color-2: rgba(#{HexToRGB($primary-color-3)}, 0.6);
   --field-errors-size: 0.7rem;
 
-  --inactive-element-opacity: .5;
+  --inactive-element-opacity: 0.5;
   --active-element-opacity: 1;
-  --hovered-element-opacity: .6;
+  --hovered-element-opacity: 0.6;
 
-  --hover-transition: .3s cubic-bezier(.33, 1, 0.68, 1) 0s;
-  --transform-transition: .3s ease;
+  --hover-transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1) 0s;
+  --transform-transition: 0.3s ease;
 }

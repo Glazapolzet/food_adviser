@@ -1,9 +1,9 @@
 import { type FC, type JSX } from "react";
-import styles from "./RecipeCard.module.scss";
-import { Headline, Paragraph } from "shared/ui";
-import { Info } from "./Info/Info";
 import { TResponseRecipe } from "shared/api/recipes";
+import { Headline, Paragraph } from "shared/ui";
 import { Cover } from "./Cover/Cover";
+import { Info } from "./Info/Info";
+import styles from "./RecipeCard.module.scss";
 
 //TODO: remove ReactNode/JSX.Element and make more strict type check for buttonComponent
 

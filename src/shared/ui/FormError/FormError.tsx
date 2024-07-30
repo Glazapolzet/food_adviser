@@ -1,6 +1,6 @@
+import { clsx } from "clsx";
 import type { FC } from "react";
 import styles from "./FormError.module.scss";
-import { clsx } from "clsx";
 
 interface FormErrorProps {
   message: string;

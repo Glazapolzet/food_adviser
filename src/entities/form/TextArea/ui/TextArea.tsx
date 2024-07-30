@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef, forwardRef, useId } from "react";
-import styles from "./TextArea.module.scss";
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef, forwardRef, useId } from "react";
 import { Label } from "shared/ui";
+import styles from "./TextArea.module.scss";
 
 interface TextAreaProps
   extends Omit<ComponentPropsWithoutRef<"textarea">, "id"> {
@@ -32,5 +32,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         />
       </div>
     );
-  },
+  }
 );

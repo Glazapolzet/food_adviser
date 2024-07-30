@@ -1,3 +1,7 @@
+import minusIcon from "assets/icons/minus.svg";
+import plusIcon from "assets/icons/plus.svg";
+import { clsx } from "clsx";
+import { ComponentPropsWithRef } from "react";
 import {
   type Control,
   type FieldArray,
@@ -8,14 +12,9 @@ import {
   useFieldArray,
   type UseFormRegister,
 } from "react-hook-form";
+import { Label } from "shared/ui";
 import { Input } from "../../Input/ui/Input";
 import styles from "./ExpandableInput.module.scss";
-import { Label } from "shared/ui";
-import plusIcon from "assets/icons/plus.svg";
-import minusIcon from "assets/icons/minus.svg";
-import { ComponentPropsWithRef } from "react";
-import { clsx } from "clsx";
-
 interface ExpandableInputProps<
   TFormValues extends FieldValues,
   TFieldName extends FieldPath<TFormValues>,
@@ -50,7 +49,7 @@ export const ExpandableInput = <
     "id"
   >({
     control,
-    name: name,
+    name,
   });
 
   const keys = Object.keys(defaultValue) as Array<TFieldName>;
@@ -101,7 +100,7 @@ export const ExpandableInput = <
                 {...props}
                 {...register(
                   `${name}.${index}.${key}` as keyof TFieldName,
-                  validationOptions ? validationOptions[key] : {},
+                  validationOptions ? validationOptions[key] : {}
                 )}
               />
             ))}

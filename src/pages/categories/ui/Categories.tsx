@@ -1,10 +1,10 @@
-import styles from "./Categories.module.scss";
 import { Preface } from "entities/preface";
 import { TabBar, TabBarSkeleton } from "entities/tabbar";
-import { Await, generatePath, Outlet, useLoaderData } from "react-router-dom";
 import { type FC, Suspense } from "react";
+import { Await, generatePath, Outlet, useLoaderData } from "react-router-dom";
 import { TResponseCategories } from "shared/api/categories";
 import { PATH_CONFIG } from "shared/config";
+import styles from "./Categories.module.scss";
 
 export const Categories: FC = () => {
   const data = useLoaderData() as {
@@ -43,7 +43,7 @@ export const Categories: FC = () => {
                     PATH_CONFIG.root.recipes.categories.category.fullPath,
                     {
                       categoryId: category.id,
-                    },
+                    }
                   ),
                   title: category.name,
                 };

@@ -19,11 +19,8 @@ export const defaultFormValues: TFormValues = {
   guideline: "",
 };
 
-const ingredientsFields = Object.keys(defaultFormValues.ingredients[0]);
-
 export const inputsConfig = {
   title: {
-    required: true,
     name: "title",
     label: "Title",
     type: "text",
@@ -31,7 +28,6 @@ export const inputsConfig = {
     registerOptions: { required: "Title is required" },
   },
   description: {
-    required: true,
     name: "description",
     label: "Description",
     type: "text",
@@ -39,7 +35,6 @@ export const inputsConfig = {
     registerOptions: { required: "Description is required" },
   },
   timeToCook: {
-    required: true,
     name: "timeToCook",
     label: "Time to cook",
     type: "number",
@@ -50,7 +45,6 @@ export const inputsConfig = {
     },
   },
   difficulty: {
-    required: true,
     name: "difficulty",
     label: "Difficulty",
     type: "radio",
@@ -58,7 +52,6 @@ export const inputsConfig = {
     registerOptions: { required: "Difficulty is required" },
   },
   servings: {
-    required: true,
     name: "servings",
     label: "Servings",
     type: "number",
@@ -69,32 +62,30 @@ export const inputsConfig = {
     },
   },
   ingredients: {
-    required: true,
     name: "ingredients",
     label: "Ingredients",
     type: "text",
     registerOptions: {
-      [ingredientsFields[0]]: {
+      name: {
         required: "Fill in this field",
       },
     },
   },
   category: {
-    required: true,
     name: "category",
     label: "Category",
     options: [],
     registerOptions: { required: "Category is required" },
   },
   cover: {
-    required: false,
     name: "cover",
     label: "Cover",
-    registerOptions: {},
+    registerOptions: {
+      required: false,
+    },
   },
   nutrients: [
     {
-      required: true,
       name: "proteins",
       fullName: "nutrients.proteins",
       label: "Proteins",
@@ -106,7 +97,6 @@ export const inputsConfig = {
       },
     },
     {
-      required: true,
       name: "fats",
       fullName: "nutrients.fats",
       label: "Fats",
@@ -118,7 +108,6 @@ export const inputsConfig = {
       },
     },
     {
-      required: true,
       name: "carbohydrates",
       fullName: "nutrients.carbohydrates",
       label: "Carbohydrates",
@@ -130,7 +119,6 @@ export const inputsConfig = {
       },
     },
     {
-      required: true,
       name: "fiber",
       fullName: "nutrients.fiber",
       label: "Fiber",
@@ -142,7 +130,6 @@ export const inputsConfig = {
       },
     },
     {
-      required: true,
       name: "kcal",
       fullName: "nutrients.kcal",
       label: "Kcal",
@@ -155,7 +142,6 @@ export const inputsConfig = {
     },
   ],
   guideline: {
-    required: true,
     name: "guideline",
     label: "Recipe guide",
     placeholder: "Write your recipe guide here...",

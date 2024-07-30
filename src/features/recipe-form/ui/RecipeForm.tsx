@@ -1,6 +1,3 @@
-import { type TResponseCategory } from "shared/api/categories";
-import styles from "./RecipeForm.module.scss";
-import { ComponentPropsWithoutRef, forwardRef, useEffect } from "react";
 import {
   Checkbox,
   CheckboxList,
@@ -11,17 +8,22 @@ import {
   TextArea,
   Upload,
 } from "entities/form";
+import { ComponentPropsWithoutRef, forwardRef, useEffect } from "react";
 import {
   FieldErrors,
   type FieldPath,
   type SubmitHandler,
   useForm,
 } from "react-hook-form";
+import { type TResponseCategory } from "shared/api/categories";
+import { createRecipe } from "shared/api/recipes";
+import { isObjectEmpty, toBase64 } from "shared/lib";
+import { Fieldset, FormError } from "shared/ui";
 import { defaultFormValues, inputsConfig } from "../config/inputs";
 import type { TFormValues } from "../types/types";
-import { Fieldset, FormError } from "shared/ui";
-import { isObjectEmpty, toBase64 } from "shared/lib";
-import { createRecipe } from "shared/api/recipes";
+import styles from "./RecipeForm.module.scss";
+
+//! this is trash and needs to be refactored
 
 interface RecipeFormProps
   extends Pick<ComponentPropsWithoutRef<"form">, "id" | "name"> {
@@ -49,7 +51,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
       ...formData
     }) => {
       const category = categories.find(
-        (category) => category.name === formCategory,
+        (category) => category.name === formCategory
       ).id;
       const ingredients = formIngredients.map(({ name }) => name);
       const cover = formCover
@@ -59,8 +61,8 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
         : formCover;
 
       const data = { cover, ingredients, category, ...formData };
-      const serv = await createRecipe(data);
-      console.log({ serv });
+      const serverResponse = await createRecipe(data);
+      console.log({ serverResponse });
     };
 
     useEffect(() => {
@@ -79,23 +81,23 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
       >
         <Fieldset legend={"main"} className={styles.fieldsetMain}>
           <Input
-            required={inputsConfig.title.required}
+            required={!!inputsConfig.title.registerOptions?.required}
             placeholder={inputsConfig.title.placeholder}
             label={inputsConfig.title.label}
             error={errors.title?.message}
             {...register<FieldPath<TFormValues>>(
               inputsConfig.title.name,
-              inputsConfig.title.registerOptions,
+              inputsConfig.title.registerOptions
             )}
           />
           <Input
-            required={inputsConfig.description.required}
+            required={!!inputsConfig.description.registerOptions?.required}
             placeholder={inputsConfig.description.placeholder}
             label={inputsConfig.description.label}
             error={errors.description?.message}
             {...register<FieldPath<TFormValues>>(
               inputsConfig.description.name,
-              inputsConfig.description.registerOptions,
+              inputsConfig.description.registerOptions
             )}
           />
         </Fieldset>
@@ -105,7 +107,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
           className={styles.fieldsetInfo}
         >
           <Input
-            required={inputsConfig.timeToCook.required}
+            required={!!inputsConfig.timeToCook.registerOptions?.required}
             placeholder={inputsConfig.timeToCook.placeholder}
             type={inputsConfig.timeToCook.type}
             min={0}
@@ -113,12 +115,12 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             error={errors.timeToCook?.message}
             {...register<FieldPath<TFormValues>>(
               inputsConfig.timeToCook.name,
-              inputsConfig.timeToCook.registerOptions,
+              inputsConfig.timeToCook.registerOptions
             )}
           />
           <CheckboxList
             label={inputsConfig.difficulty.label}
-            required={inputsConfig.difficulty.required}
+            required={!!inputsConfig.difficulty.registerOptions?.required}
           >
             {inputsConfig.difficulty.options.map((option) => (
               <Checkbox
@@ -128,13 +130,13 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
                 type={inputsConfig.difficulty.type}
                 {...register<FieldPath<TFormValues>>(
                   inputsConfig.difficulty.name,
-                  inputsConfig.difficulty.registerOptions,
+                  inputsConfig.difficulty.registerOptions
                 )}
               />
             ))}
           </CheckboxList>
           <Input
-            required={inputsConfig.servings.required}
+            required={!!inputsConfig.servings.registerOptions?.required}
             placeholder={inputsConfig.servings.placeholder}
             type={inputsConfig.servings.type}
             label={inputsConfig.servings.label}
@@ -142,14 +144,16 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
             min={0}
             {...register<FieldPath<TFormValues>>(
               inputsConfig.servings.name,
-              inputsConfig.servings.registerOptions,
+              inputsConfig.servings.registerOptions
             )}
           />
         </Fieldset>
 
         <Fieldset legend={"ingredients"} className={styles.fieldsetIngredients}>
           <ExpandableInput<TFormValues, "ingredients">
-            required={inputsConfig.ingredients.required}
+            required={
+              !!inputsConfig.ingredients.registerOptions?.name?.required
+            }
             errors={errors.ingredients as Array<FieldErrors<"ingredients">>}
             name={inputsConfig.ingredients.name}
             label={inputsConfig.ingredients.label}
@@ -164,12 +168,12 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
         <Fieldset legend={"category"} className={styles.fieldsetCategory}>
           <Select
             error={errors.category?.message}
-            required={inputsConfig.category.required}
+            required={!!inputsConfig.category.registerOptions?.required}
             label={inputsConfig.category.label}
             options={inputsConfig.category.options}
             {...register<FieldPath<TFormValues>>(
               inputsConfig.category.name,
-              inputsConfig.category.registerOptions,
+              inputsConfig.category.registerOptions
             )}
           />
         </Fieldset>
@@ -184,12 +188,12 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
                 component: (
                   <Upload
                     id={"upload"}
-                    required={inputsConfig.cover.required}
+                    required={!!inputsConfig.cover.registerOptions?.required}
                     multiple={false}
                     accept={"image/*"}
                     {...register<FieldPath<TFormValues>>(
                       inputsConfig.cover.name,
-                      inputsConfig.cover.registerOptions,
+                      inputsConfig.cover.registerOptions
                     )}
                   />
                 ),
@@ -200,10 +204,10 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
                 component: (
                   <Input
                     id={"link"}
-                    required={inputsConfig.cover.required}
+                    required={!!inputsConfig.cover.registerOptions?.required}
                     {...register<FieldPath<TFormValues>>(
                       inputsConfig.cover.name,
-                      inputsConfig.cover.registerOptions,
+                      inputsConfig.cover.registerOptions
                     )}
                   />
                 ),
@@ -219,7 +223,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
           {inputsConfig.nutrients.map((nutrient) => (
             <Input
               key={nutrient.name}
-              required={nutrient.required}
+              required={!!nutrient.registerOptions?.required}
               error={errors.nutrients?.[nutrient.name]?.message}
               placeholder={nutrient.placeholder}
               type={nutrient.type}
@@ -227,7 +231,7 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
               label={nutrient.label}
               {...register<FieldPath<TFormValues>>(
                 nutrient.fullName,
-                nutrient.registerOptions,
+                nutrient.registerOptions
               )}
             />
           ))}
@@ -237,11 +241,11 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
           <TextArea
             label={inputsConfig.guideline.label}
             error={errors.guideline?.message}
-            required={inputsConfig.guideline.required}
+            required={!!inputsConfig.guideline.registerOptions?.required}
             placeholder={inputsConfig.guideline.placeholder}
             {...register<FieldPath<TFormValues>>(
               inputsConfig.guideline.name,
-              inputsConfig.guideline.registerOptions,
+              inputsConfig.guideline.registerOptions
             )}
           />
         </Fieldset>
@@ -251,5 +255,5 @@ export const RecipeForm = forwardRef<HTMLFormElement, RecipeFormProps>(
         )}
       </form>
     );
-  },
+  }
 );

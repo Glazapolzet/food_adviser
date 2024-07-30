@@ -4,7 +4,7 @@ import { isObjectEmpty } from "shared/lib";
 
 type DynamicPathParams = {
   params: {
-    categoryId?: string;
+    categoryId: string | Record<string, never>;
   };
 };
 

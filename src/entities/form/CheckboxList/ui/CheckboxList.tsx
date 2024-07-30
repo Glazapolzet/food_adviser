@@ -7,7 +7,7 @@ interface CheckboxListProps {
   required?: boolean | undefined;
   label?: string;
   className?: string;
-  children?: Array<ReactElement<ComponentProps<"Checkbox">, "Checkbox">>;
+  children?: Array<ReactElement<ComponentProps<"input">, "input">>;
 }
 
 export const CheckboxList: FC<CheckboxListProps> = ({
